@@ -22,8 +22,8 @@
   <link rel="icon" type="image/png" href="assets/favicon-64.png"><link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700&display=swap">
-  <link rel="stylesheet" href="sidebar.css?v=20261114u"><link rel="stylesheet" href="shell3.css?v=20261118c"><link rel="stylesheet" href="v3.css?v=20261118i"><link rel="stylesheet" href="cine.css?v=20261120d"><link rel="stylesheet" href="laoyu-home-31.css?v=20261122a">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap"><script>/* Chinese font (~350 KB) only when Chinese is shown: saved 中文 / EN+中, a Chinese browser, or a later switch */(function(){var d=document.documentElement,u="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap";function add(){if(document.getElementById("lyZhFont"))return;var l=document.createElement("link");l.id="lyZhFont";l.rel="stylesheet";l.href=u;document.head.appendChild(l)}var s=null;try{s=localStorage.getItem("laoyuLang")}catch(e){}if(s==="zh"||s==="bi"||(s!=="en"&&/^zh/i.test(navigator.language||"")))add();else if(window.MutationObserver)new MutationObserver(function(m,o){if(d.getAttribute("data-lang")==="zh"||d.hasAttribute("data-bi")){add();o.disconnect()}}).observe(d,{attributes:true,attributeFilter:["data-lang","data-bi"]})})();</script>
+  <link rel="stylesheet" href="sidebar.css?v=20261114u"><link rel="stylesheet" href="shell3.css?v=20261118c"><link rel="stylesheet" href="v3.css?v=20261118i"><link rel="stylesheet" href="cine.css?v=20261120d"><link rel="stylesheet" href="laoyu-home-31.css?v=20261122r4">
   <!-- 3D story libraries: exact pinned versions -->
   <script type="importmap">{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js", "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/" } }</script>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
@@ -78,6 +78,7 @@
     <div class="cineCopy">
       <h1>Solve Real Problems. <span>Work Smarter with AI.</span></h1>
       <div class="cineActions"><a class="cineBtn pri" href="resources.html">Explore Free Tools</a><a class="cineBtn" href="about.html">Discover LAOYUTALKS</a></div>
+      <a class="cineSkip" href="#try">Skip the intro ↓</a>
     </div>
     <div class="cineScroll" aria-hidden="true">SCROLL ↓</div>
   </div>
@@ -99,18 +100,6 @@
     <div>
       <div class="tryCard" id="hOee" data-i18n-block></div>
       <p class="heroNote">Runs in your browser. Your numbers are not sent anywhere.</p>
-    </div>
-  </div>
-</section>
-
-<!-- B · Brand philosophy -->
-<section class="sec alt" id="philosophy">
-  <div class="wrap">
-    <h2 class="sr">Our philosophy</h2>
-    <div class="grid3 pillars">
-      <div class="card"><h3>Think First</h3><p>Understand the problem before you pick a tool.</p></div>
-      <div class="card"><h3>Improve Always</h3><p>Small, steady improvements that last.</p></div>
-      <div class="card"><h3>Build with AI</h3><p>Turn ideas into working tools and workflows.</p></div>
     </div>
   </div>
 </section>
@@ -171,8 +160,20 @@
   </div>
 </section>
 
+<!-- B · Brand philosophy -->
+<section class="sec alt" id="philosophy">
+  <div class="wrap">
+    <h2 class="sr">Our philosophy</h2>
+    <div class="grid3 pillars">
+      <div class="card"><h3>Think First</h3><p>Understand the problem before you pick a tool.</p></div>
+      <div class="card"><h3>Improve Always</h3><p>Small, steady improvements that last.</p></div>
+      <div class="card"><h3>Build with AI</h3><p>Turn ideas into working tools and workflows.</p></div>
+    </div>
+  </div>
+</section>
+
 <!-- H · Our story + I · Community -->
-<section class="sec alt" id="story">
+<section class="sec" id="story">
   <div class="wrap">
     <div class="grid2">
       <div class="split story">
@@ -226,7 +227,7 @@
   </div>
 </footer>
 
-<script src="i18n.js?v=20261120b"></script>
+<script src="i18n.js?v=20261122r4"></script>
 <script src="v3.js?v=20261117bm"></script>
 <script src="email-check.js?v=20261030"></script>
 <script src="resources-data.js?v=20261118c"></script><script src="home3.js?v=20261117bm"></script><script src="tryit.js?v=20261117bm"></script><script src="chatbot.js?v=20261117bm"></script>
