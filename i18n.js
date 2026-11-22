@@ -757,6 +757,7 @@
     "Manufacturing, quality and management questions": "制造、质量与管理问题",
     "Illustration · sample data": "示意图 · 示例数据",
     "SCROLL ↓": "向下滚动 ↓",
+    "Skip the intro ↓": "跳过动画 ↓",
     "Try it now": "马上试试"
   };
 
