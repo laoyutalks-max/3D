@@ -96,15 +96,7 @@ html.r3d .r3dShow { opacity: 1; transform: none;
   transition: opacity .7s var(--r3d-ease) var(--r3d-d, 0s), transform .7s var(--r3d-ease) var(--r3d-d, 0s); }
 html.r3d .r3dShow.r3dTilt:hover { transform: perspective(900px) rotateX(var(--r3d-rx, 0deg)) rotateY(var(--r3d-ry, 0deg)) translate3d(0, -4px, 0); }
 
-/* ---------- 7. Resources hero contrast (dark hero from laoyu-31.css needs light text in light theme) ---------- */
-.resLib2 .rlHero { --ink: #eef4fb; --muted: #b6c9db; --line: rgba(150, 190, 220, .22); color: #eef4fb; }
-.resLib2 .rlHero h1 { color: #f2f8ff; }
-.resLib2 .rlHero p, .resLib2 .rlHero .rlQuick > span { color: #b6c9db; }
-.resLib2 .rlHero .rlStats b { color: #f2f8ff; }
-.resLib2 .rlHero .rlStats span { color: #9bb3c8; }
-.resLib2 .rlHero .rlQuick button { color: #dcebf7; border-color: rgba(140, 200, 235, .35); background: rgba(85, 214, 255, .06); }
-.resLib2 .rlHero .rlSearchBig input { color: #eef4fb; }
-.resLib2 .rlHero .rlSearchBig input::placeholder { color: #8ea6bc; }
+/* ---------- 7. (Resources hero contrast fix now lives in laoyu-31.css, next to the dark hero it fixes) ---------- */
 
 /* ---------- 8. Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
@@ -113,4 +105,7 @@ html.r3d .r3dShow.r3dTilt:hover { transform: perspective(900px) rotateX(var(--r3
   .r3dCard, .r3dTilt, .r3dTilt:hover, .btn, .btn:hover { transition: none !important; transform: none !important; }
   .r3dProgress { display: none; }
 }
-@media print { .r3dProgress, .r3dGlare { display: none !important; } }
+@media print {
+  .r3dProgress, .r3dGlare { display: none !important; }
+  html.r3d .r3dWait { opacity: 1 !important; transform: none !important; } /* never print blank cards */
+}

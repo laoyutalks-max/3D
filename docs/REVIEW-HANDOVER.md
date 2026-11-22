@@ -52,6 +52,35 @@ Cinematic 3D homepage (Three.js story, chapter pins), factory 3D twin, header/na
 - Mobile 375 px: resources, home, automation have no horizontal overflow; tilt disabled on touch
 - Project checks (`.claude/tests/run_checks.py`): secrets, forbidden files, catalog, sidebar sync, sitemap, syntax, i18n **PASS**. `links` FAIL only because the checker hard-codes the production path and rejects the review `/3D/` base in `404.html`. `cache-bust` WARN only because the newly added production files are new to this repo
 
+### 5b. Happy and unhappy path tests (EN and 中文)
+Run through a local test server that replaces all outside network calls with a stub before any page script runs, so no test sign-up, chat or contact data reached the live Apps Script.
+
+| Area | Happy path | Unhappy paths | Result |
+|---|---|---|---|
+| Resources search | "oee", "8D", "停机" match | empty → all 41; nonsense → "No resource matches that yet"; 300-char input; `<img onerror>` / `"; alert(1)` shown as text | Pass, no XSS |
+| Category / type filters | all 8 counts match their labels | Quality + Calculator → empty message; Clear → 41; bogus `#c-…` hash → shows all | Pass |
+| Header search | matches | nonsense → "0 found · No match" | Pass |
+| Homepage OEE check | 78.3 %, perfect run 100 % | empty, zero, negative, text, downtime > planned, good > total → clear message, no NaN | Pass |
+| Full OEE Loss Calculator | 83.9 % | empty / zero cycle → blank; **break > shift, downtime > run, bad > total → shows 0 % and a wrong loss report** | **Issue (same in production)** |
+| Sign-up gate | unlocks, lead posted once | empty name, spaces-only name, empty/invalid email, `a..b@`, typo `gmial.com` (offers fix), disposable, test domain, domain without mail → right message, nothing sent | Pass |
+| Gate offline | — | network down → still unlocks, lead queued; next visit online → sent once, queue cleared | Pass |
+| Spreadsheet injection | — | name `=HYPERLINK(…)` stored as `'=HYPERLINK(…)` | Pass |
+| Contact form | "✓ Message sent" | empty, bad email, disposable, no message; offline → error, text kept; request hangs → error after ~12 s, button re-enabled | Pass |
+| Chatbot | guided answers EN/中文 | empty not sent; gibberish → fallback; `<img onerror>` shown as text; offline → still answers | Pass |
+| 404 | — | missing page and nested missing path → branded 404, links stay in `/3D/` | Pass |
+| Layer failure | — | `review3d.css/js` removed → all pages still work, nothing hidden | Pass |
+| Print | — | cards not yet revealed by scrolling | Fixed (now always printed) |
+| 中文 mode | — | all of the above messages appear in Chinese only | Pass |
+
+Found and fixed during these tests:
+- Printing could leave cards blank if they had not scrolled into view yet (fixed in `review3d.css`).
+- The Resources headline fix depended on the new layer; it now lives in `laoyu-31.css`, next to the dark hero it fixes.
+
+Not fixed (also in production; owner decision):
+- Full OEE Loss Calculator (`tools-prod.js`) accepts impossible input and reports 0 % OEE with invented losses (e.g. 900 bad parts of 780 → "1,020 units lost"). The homepage mini-calculator already blocks this with messages in both languages.
+- Contact form requires 5+ characters, which rejects real short Chinese messages such as "请联系我", and the error ("please write a message") is confusing.
+- The three dashboards (`dash-*.html`) are "Coming soon", so their CSV import cannot be reached or tested by visitors.
+
 ## 6. Deployment status
 - Pages enabled: https://laoyutalks-max.github.io/3D/
 - The site goes live when this PR is merged into `main` of the 3D repo (the workflow deploys on push to `main`). Production repo and site are untouched.
