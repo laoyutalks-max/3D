@@ -70,3 +70,13 @@
 @media (prefers-reduced-motion:reduce) {
   .resLib2 .goal,.resLib2 .rCard,.resLib2 .rShot img { transition:none!important; }
 }
+/* Contrast fix: the hero above is always dark, so its text must stay light in the light theme too
+   (without this the headline was dark navy on dark navy). */
+.resLib2 .rlHero { --ink: #eef4fb; --muted: #b6c9db; --line: rgba(150, 190, 220, .22); color: #eef4fb; }
+.resLib2 .rlHero h1 { color: #f2f8ff; }
+.resLib2 .rlHero p, .resLib2 .rlHero .rlQuick > span { color: #b6c9db; }
+.resLib2 .rlHero .rlStats b { color: #f2f8ff; }
+.resLib2 .rlHero .rlStats span { color: #9bb3c8; }
+.resLib2 .rlHero .rlQuick button { color: #dcebf7; border-color: rgba(140, 200, 235, .35); background: rgba(85, 214, 255, .06); }
+.resLib2 .rlHero .rlSearchBig input { color: #eef4fb; }
+.resLib2 .rlHero .rlSearchBig input::placeholder { color: #8ea6bc; }

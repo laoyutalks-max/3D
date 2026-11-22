@@ -1,0 +1,111 @@
+/* =========================================================
+   LAOYUTALKS 3D Review — shared depth & motion layer (every page)
+   Loads after each page's own stylesheets. Additive only:
+   no colours, copy, logo, routes or behaviour are replaced.
+   1. Page transitions (cross-document View Transitions)
+   2. Scroll progress + header depth
+   3. Typography and hierarchy
+   4. Section and hero depth
+   5. Cards: elevation, 3D tilt and glare (review3d.js)
+   6. Scroll reveal (review3d.js; content is visible without it)
+   7. Resources hero contrast fix
+   8. Reduced motion
+   ========================================================= */
+
+/* ---------- 1. Page transitions ---------- */
+@view-transition { navigation: auto; }
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: .26s; animation-timing-function: cubic-bezier(.2, .7, .2, 1); }
+
+:root {
+  --r3d-ease: cubic-bezier(.2, .7, .2, 1);
+  --r3d-sh1: 0 1px 2px rgba(0, 0, 0, .28), 0 10px 26px rgba(0, 0, 0, .24);
+  --r3d-sh2: 0 2px 8px rgba(0, 0, 0, .32), 0 24px 54px rgba(0, 0, 0, .42);
+  --r3d-glow: rgba(110, 200, 255, .10);
+}
+html[data-theme="light"] {
+  --r3d-sh1: 0 1px 2px rgba(10, 22, 40, .05), 0 8px 22px rgba(10, 22, 40, .07);
+  --r3d-sh2: 0 2px 6px rgba(10, 22, 40, .07), 0 22px 46px rgba(10, 22, 40, .14);
+  --r3d-glow: rgba(255, 255, 255, .55);
+}
+
+/* ---------- 2. Scroll progress + header depth ---------- */
+.r3dProgress { position: fixed; top: 0; left: 0; right: 0; height: 2px; z-index: 1001; pointer-events: none;
+  transform-origin: 0 50%; transform: scaleX(var(--r3d-p, 0));
+  background: linear-gradient(90deg, #3ddc84, #35c8ff); }
+html.v3 .nav { transition: box-shadow .35s var(--r3d-ease); }
+html.r3d-scrolled.v3 .nav { box-shadow: 0 1px 0 rgba(255, 255, 255, .04), 0 12px 32px rgba(0, 0, 0, .28); }
+
+/* ---------- 3. Typography and hierarchy ---------- */
+html.v3 h1, html.v3 h2, html.v3 h3 { text-wrap: balance; }
+html.v3 p { text-wrap: pretty; }
+.hero h1 { letter-spacing: -.03em; line-height: 1.06; }
+.hero .lede { line-height: 1.6; }
+.secHead h2, .stHead h2 { font-size: clamp(26px, 3.2vw, 36px); letter-spacing: -.028em; line-height: 1.12; }
+.secHead h2::after, .stHead h2::after { content: ""; display: block; width: 44px; height: 3px; margin-top: 12px; border-radius: 3px;
+  background: linear-gradient(90deg, var(--green), transparent); }
+.secHead p { line-height: 1.6; }
+.eyebrow { letter-spacing: .14em; }
+.card h3 { letter-spacing: -.012em; }
+
+/* ---------- 4. Section and hero depth ---------- */
+.sec.alt { background-image:
+  radial-gradient(ellipse 55% 70% at 100% 0%, color-mix(in srgb, var(--green) 6%, transparent), transparent 62%),
+  radial-gradient(ellipse 45% 60% at 0% 100%, color-mix(in srgb, #35c8ff 5%, transparent), transparent 60%); }
+.hero:not(.on-navy):not(.rlHero) { position: relative; isolation: isolate; }
+.hero:not(.on-navy):not(.rlHero)::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(ellipse 42% 75% at 88% 12%, color-mix(in srgb, var(--green) 10%, transparent), transparent 66%),
+    linear-gradient(color-mix(in srgb, var(--line) 55%, transparent) 1px, transparent 1px) 0 0 / 56px 56px,
+    linear-gradient(90deg, color-mix(in srgb, var(--line) 55%, transparent) 1px, transparent 1px) 0 0 / 56px 56px;
+  -webkit-mask-image: linear-gradient(100deg, transparent 35%, #000 90%); mask-image: linear-gradient(100deg, transparent 35%, #000 90%);
+  opacity: .7; }
+.heroFlow { box-shadow: var(--r3d-sh2); }
+
+/* Hero entrance (CSS only; content is visible where animations are unsupported) */
+@media (prefers-reduced-motion: no-preference) {
+  .hero h1, .hero .lede, .hero .eyebrow, .hero .heroNote, .hero .btn, .hero .heroFlow, .hero .crumb, .hero .crumbs {
+    animation: r3dRise .7s var(--r3d-ease) both; }
+  .hero .eyebrow, .hero .crumb, .hero .crumbs { animation-delay: .02s; }
+  .hero h1 { animation-delay: .08s; }
+  .hero .lede { animation-delay: .16s; }
+  .hero .btn, .hero .heroNote { animation-delay: .24s; }
+  .hero .heroFlow { animation-delay: .3s; }
+}
+@keyframes r3dRise { from { opacity: 0; transform: translate3d(0, 16px, 0); } to { opacity: 1; transform: none; } }
+
+/* Buttons: small lift, firm press */
+.btn, .cineBtn { transition: transform .2s var(--r3d-ease), box-shadow .2s var(--r3d-ease), border-color .2s, background-color .2s, filter .2s; }
+.btn:hover { transform: translateY(-1px); }
+.btn.pri:hover, .btn.orange:hover { box-shadow: 0 8px 22px color-mix(in srgb, var(--green) 30%, transparent); }
+.btn:active, .cineBtn:active { transform: translateY(0) scale(.98); }
+
+/* ---------- 5. Cards ---------- */
+.r3dCard { position: relative; box-shadow: var(--r3d-sh1);
+  transition: transform .45s var(--r3d-ease), box-shadow .45s var(--r3d-ease), border-color .25s; }
+.r3dCard:hover { box-shadow: var(--r3d-sh2); border-color: color-mix(in srgb, var(--green) 55%, var(--line)); }
+.r3dTilt { transform-style: preserve-3d; will-change: transform; }
+.r3dTilt.is-live { transition: transform .12s linear, box-shadow .45s var(--r3d-ease), border-color .25s; }
+.r3dTilt:hover { transform: perspective(900px) rotateX(var(--r3d-rx, 0deg)) rotateY(var(--r3d-ry, 0deg)) translate3d(0, -4px, 0); }
+.r3dGlare { position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 2; opacity: 0; transition: opacity .35s var(--r3d-ease);
+  background: radial-gradient(420px circle at var(--r3d-gx, 50%) var(--r3d-gy, 50%), var(--r3d-glow), transparent 45%); }
+.r3dTilt:hover > .r3dGlare { opacity: 1; }
+
+/* ---------- 6. Scroll reveal ---------- */
+html.r3d .r3dWait { opacity: 0; transform: translate3d(0, 22px, 0); }
+html.r3d .r3dShow { opacity: 1; transform: none;
+  transition: opacity .7s var(--r3d-ease) var(--r3d-d, 0s), transform .7s var(--r3d-ease) var(--r3d-d, 0s); }
+html.r3d .r3dShow.r3dTilt:hover { transform: perspective(900px) rotateX(var(--r3d-rx, 0deg)) rotateY(var(--r3d-ry, 0deg)) translate3d(0, -4px, 0); }
+
+/* ---------- 7. (Resources hero contrast fix now lives in laoyu-31.css, next to the dark hero it fixes) ---------- */
+
+/* ---------- 8. Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  @view-transition { navigation: none; }
+  html.r3d .r3dWait { opacity: 1; transform: none; }
+  .r3dCard, .r3dTilt, .r3dTilt:hover, .btn, .btn:hover { transition: none !important; transform: none !important; }
+  .r3dProgress { display: none; }
+}
+@media print {
+  .r3dProgress, .r3dGlare { display: none !important; }
+  html.r3d .r3dWait { opacity: 1 !important; transform: none !important; } /* never print blank cards */
+}
