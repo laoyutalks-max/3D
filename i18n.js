@@ -1,0 +1,1211 @@
+/* =========================================================
+   LAOYU — LANGUAGE (English / 简体中文 / Bilingual)
+   Loaded before script.js. Swaps page text in place; English
+   in the HTML stays the source of truth. To translate new
+   text, add "English text": "中文" to TEXT below.
+   ========================================================= */
+
+(function () {
+
+  /* Single text pieces (matched exactly, spaces ignored) */
+  var TEXT = {
+    /* Quick wins */
+    "MANUFACTURING × AI × MANAGEMENT": "制造 × AI × 管理",
+    "Real workplace problems, tested with AI and explained simply, for supervisors, engineers and managers.": "把真实的工作问题交给 AI 实测，再用简单的方式讲清楚，写给主管、工程师和管理者。",
+    "20 years on the shop floor. Real workplace problems, tested with AI and explained simply, for supervisors, engineers and managers.": "20 年车间一线经验。把真实的工作问题交给 AI 实测，再用简单的方式讲清楚，写给主管、工程师和管理者。",
+    "FOLLOW ON TIKTOK ↗": "关注 TikTok ↗",
+    "LAOYU | Practical AI for Manufacturing Leaders": "LAOYU 老鱼 | 写给制造业管理者的实用 AI",
+
+    /* Navigation */
+    "HOME": "首页",
+    "RESOURCES": "资源",
+    "AI CONTENT BRAIN": "AI 内容大脑",
+    "ABOUT": "关于",
+    "CONTACT": "联系",
+    "GET TEMPLATES": "获取模板",
+
+    /* HUD status + boot */
+    "SYSTEM": "系统",
+    "ONLINE": "在线",
+    "MODULE": "模块",
+    "LOCAL": "本地时间",
+    "INITIALIZING": "正在启动",
+    "INITIALIZING LAOYU AI CORE": "正在启动 LAOYU AI 核心",
+    "LOADING KNOWLEDGE MODULES": "正在加载知识模块",
+    "PREPARING YOUR INSIGHTS": "正在准备你的洞见",
+    "SYSTEMS ONLINE": "系统已就绪",
+
+    /* Home — hero */
+    "AI × PRODUCTIVITY × BETTER WORK": "AI × 效率 × 更好地工作",
+    "Practical ideas, tools and systems that help you work smarter with AI.": "实用的思路、工具与系统，助你借助 AI 更聪明地工作。",
+    "EXPLORE LAOYU →": "探索 LAOYU →",
+    "WATCH ON TIKTOK ↗": "在 TIKTOK 观看 ↗",
+
+    /* Home — pillars */
+    "AI Solutions": "AI 解决方案",
+    "Smart tools and AI-powered systems to help you work intelligently.": "智能工具与 AI 驱动的系统，让工作更智能。",
+    "Manufacturing Excellence": "卓越制造",
+    "Process improvement, automation and data-driven systems.": "流程改善、自动化与数据驱动的系统。",
+    "Manager Thinking": "管理者思维",
+    "Leadership, planning and decision-making frameworks.": "领导力、计划与决策框架。",
+    "Continuous Improvement": "持续改善",
+    "Small changes, big impact. Build better systems every day.": "小改变，大影响。每天打造更好的系统。",
+
+    /* Home — TikTok */
+    "Most Watched on TikTok": "TikTok 热门视频",
+    "Short, practical ideas that help you work smarter.": "简短实用的想法，助你更聪明地工作。",
+    "VIEW ALL ON TIKTOK ↗": "在 TIKTOK 查看全部 ↗",
+
+    /* Home — TikTok video cards (most watched) */
+    "still works…": "还在工作…",
+    "But no longer cares?": "却已经不在乎了？",
+    "Your Best Employee Still Works — But No Longer Cares": "最好的员工还在工作，却已不在乎",
+    "The higher you go,": "职位越高，",
+    "the fewer people": "能说真话的人",
+    "you can talk to honestly": "就越少",
+    "The Higher You Go, the Fewer People You Can Talk To": "职位越高，能坦诚交流的人越少",
+    "Stop overthinking": "别再过度在意",
+    "what people think": "别人",
+    "of you": "怎么看你",
+    "Stop Overthinking What People Think of You": "别再过度在意别人怎么看你",
+    "You can't control": "人生无法",
+    "everything in life": "掌控一切",
+    "But you can control your response": "但你能掌控自己的反应",
+    "You Can't Control Everything — Only Your Response": "无法掌控一切，但能掌控你的反应",
+    "Your best employee": "你最好的员工",
+    "stopped giving ideas": "不再提想法了",
+    "Should you be worried?": "你该担心吗？",
+    "Your Best Employee Suddenly Stopped Giving Ideas": "最好的员工突然不再提想法",
+    "▶ Watch on TikTok": "▶ 在 TikTok 观看",
+
+    /* Home — resources */
+    "Free Resources": "免费资源",
+    "Templates, prompts and practical tools.": "模板、提示词与实用工具。",
+    "BROWSE RESOURCES →": "浏览资源 →",
+    "Start building better systems.": "开始打造更好的系统。",
+    "Useful resources for content planning, AI workflows, productivity and continuous improvement.": "涵盖内容规划、AI 工作流、效率提升与持续改善的实用资源。",
+    "Content Planner": "内容规划表",
+    "Plan TikTok content with ease.": "轻松规划 TikTok 内容。",
+    "AI Prompt Library": "AI 提示词库",
+    "Reusable prompts for creation.": "可重复使用的创作提示词。",
+    "Productivity Templates": "效率模板",
+    "Planning and tracking templates.": "计划与追踪模板。",
+    "Checklists": "检查清单",
+    "Practical checklists for work.": "实用的工作检查清单。",
+
+    "Track actions, projects and team performance.": "追踪行动、项目与团队绩效。",
+    "Useful resources for AI at work, manufacturing, management and continuous improvement.": "涵盖工作中的 AI、制造、管理与持续改善的实用资源。",
+    "Ready-to-use AI prompts for daily work.": "可直接使用的日常工作 AI 提示词。",
+    "Practical AI prompts for productivity, management, problem solving and daily operations.": "用于效率、管理、解决问题与日常运营的实用 AI 提示词。",
+    /* Home — content brain */
+    "Generate. Analyze. Improve. Repeat.": "生成。分析。改善。循环。",
+    "Your AI-powered content management workflow for ideas, scripts, captions, performance insights and the next content idea.": "AI 驱动的内容管理工作流：从选题、脚本、文案，到数据洞察，再到下一个内容创意。",
+    "EXPLORE CONTENT BRAIN →": "探索内容大脑 →",
+    "AI-powered content workflow": "AI 驱动的内容工作流",
+
+    /* Home — about / contact */
+    "About LAOYU": "关于 LAOYU",
+    "LAOYU is a practical platform focused on productivity, AI and smarter ways of working.": "LAOYU 是一个专注于效率、AI 与更聪明工作方式的实用平台。",
+    "We turn real-world problems into simple systems, useful tools and actionable content.": "我们把真实问题转化为简单的系统、实用的工具和可落地的内容。",
+    "LEARN MORE →": "了解更多 →",
+    "Have a question?": "有问题吗？",
+    "Let's connect and create better solutions together.": "让我们联系，一起打造更好的解决方案。",
+    "CONTACT LAOYU →": "联系 LAOYU →",
+
+    /* Footer */
+    "NAVIGATION": "导航",
+    "Home": "首页",
+    "Resources": "资源",
+    "AI Content Brain": "AI 内容大脑",
+    "Templates": "模板",
+    "AI Prompts": "AI 提示词",
+    "Guides": "指南",
+    "Problem Solvers": "问题解决工具",
+    "What do you want to fix today?": "今天想解决什么问题？",
+    "SEE ALL GOALS →": "查看全部目标 →",
+    "READY TO USE": "立即可用",
+    "OPEN THE TOOLBOX →": "打开工具箱 →",
+    "DASHBOARD TEMPLATES": "看板模板",
+    "Production Performance Dashboard | LAOYU": "生产绩效看板 | LAOYU",
+    "Dashboards from your own data": "用你自己的数据生成看板",
+    "Import a CSV and get a ready dashboard. Works offline.": "导入 CSV，即可得到现成的看板。可离线使用。",
+    "Downtime Analysis Dashboard | LAOYU": "停机分析看板 | LAOYU",
+    "Manpower Planning Dashboard | LAOYU": "人力规划看板 | LAOYU",
+    "CONNECT": "关注",
+    "Email": "电子邮件",
+    "LAOYU. All rights reserved.": "LAOYU 版权所有。",
+    "Built with ♥ by LAOYU": "由 LAOYU 用 ♥ 打造",
+
+    /* LAOYUTALKS page */
+    "LAOYUTALKS": "老鱼说",
+    "Practical ideas. Better thinking.": "实用想法，更好思维。",
+    "AI, manufacturing excellence, manager thinking and continuous improvement — explained simply.": "AI、卓越制造、管理者思维与持续改善——简单讲清楚。",
+    "AI × WORK": "AI × 工作",
+    "How AI can improve daily work": "AI 如何改善日常工作",
+    "AI · Productivity": "AI · 效率",
+    "MANAGER": "管理者",
+    "THINKING": "思维",
+    "From execution to improvement": "从执行到改善",
+    "Management · Leadership": "管理 · 领导力",
+    "BETTER": "更好",
+    "The power of continuous improvement": "持续改善的力量",
+    "Kaizen · Growth": "改善 · 成长",
+    "DATA": "数据",
+    "DECISIONS": "决策",
+    "Let data speak": "让数据说话",
+    "Data · Decisions": "数据 · 决策",
+
+    /* Resources page */
+    "LAOYU RESOURCES": "LAOYU 资源",
+    "Simple templates, AI prompts and productivity tools designed to help you create, organize and improve your work.": "简单的模板、AI 提示词与效率工具，帮助你创作、整理并改善工作。",
+    "RESOURCE LIBRARY": "资源库",
+    "Tools for Better Work": "让工作更好的工具",
+    "More resources will be added as the LAOYU platform grows.": "随着 LAOYU 平台成长，将陆续加入更多资源。",
+    "Plan TikTok and social media content, organize ideas and track publishing progress.": "规划 TikTok 与社交媒体内容，整理创意并追踪发布进度。",
+    "COMING SOON": "即将推出",
+    "FREE · GET IT →": "免费领取 →",
+    "GET IT FREE →": "免费领取 →",
+    "FREE CHECKLIST": "免费清单",
+    "FREE TEMPLATE": "免费模板",
+    "Supervisor Daily Planner →": "主管每日计划表 →",
+    "Shift Handover Template →": "交接班模板 →",
+    "Weekly Action Tracker →": "每周行动追踪表 →",
+    "Production KPI Dashboard (Excel) →": "生产 KPI 仪表板（Excel）→",
+    "Manpower Gap Calculator →": "人力缺口计算器 →",
+    "Repeated Mistake Worksheet →": "重复错误改善工作表 →",
+    "Practical tools for everyday problems on the floor.": "解决现场日常问题的实用工具。",
+    "FREE TOOL": "免费工具",
+    "FREE WORKSHEET": "免费工作表",
+    "FREE EXCEL DASHBOARD": "免费 Excel 仪表板",
+    "QUIET QUITTING EARLY-WARNING CHECKLIST": "员工默默躺平预警清单",
+    "AI PROMPT PACK FOR OPERATIONS MANAGERS": "运营经理 AI 提示词包",
+    "SUPERVISOR DAILY PLANNER": "主管每日计划表",
+    "SHIFT HANDOVER TEMPLATE": "交接班模板",
+    "WEEKLY ACTION TRACKER": "每周行动追踪表",
+    "MANPOWER GAP CALCULATOR": "人力缺口计算器",
+    "REPEATED MISTAKE WORKSHEET": "重复错误改善工作表",
+    "PRODUCTION KPI DASHBOARD": "生产 KPI 仪表板",
+    "FREE PROMPT PACK": "免费提示词包",
+    "Practical AI prompts for productivity, management, problem solving and content creation.": "用于效率、管理、解决问题与内容创作的实用 AI 提示词。",
+    "Templates designed to simplify daily planning, prioritization and execution.": "简化日常计划、优先级排序与执行的模板。",
+    "Dashboard Templates": "仪表板模板",
+    "Simple dashboards for tracking actions, projects, workload and performance.": "追踪行动、项目、工作量与绩效的简易仪表板。",
+    "Ready-to-use checklists for continuous improvement, operations and everyday work.": "适用于持续改善、运营与日常工作的现成检查清单。",
+    "More Resources": "更多资源",
+    "New tools, templates and practical resources will be added here over time.": "新的工具、模板与实用资源将陆续加入。",
+    "LAOYU AI": "LAOYU AI",
+    "LAOYU AI Content Brain helps transform ideas, problems and experiences into structured content that can be reused across your workflow.": "LAOYU AI 内容大脑帮助你把想法、问题与经验转化为结构化内容，并在整个工作流中重复使用。",
+    "EXPLORE AI CONTENT BRAIN →": "探索 AI 内容大脑 →",
+    "FOLLOW LAOYU": "关注 LAOYU",
+    "Follow LAOYUTALKS": "关注老鱼说",
+    "Follow LAOYUTALKS for practical ideas about AI, productivity, manufacturing excellence and management.": "关注老鱼说，获取关于 AI、效率、卓越制造与管理的实用想法。",
+    "FOLLOW @laoyu.talks ↗": "关注 @laoyu.talks ↗",
+    "About": "关于",
+    "Contact": "联系",
+    "Privacy": "隐私政策",
+    "Terms": "服务条款",
+    "Privacy Policy": "隐私政策",
+    "Terms of Service": "服务条款",
+    "LEGAL": "法律信息",
+
+    /* AI Content Brain page */
+    "An AI-powered content management workflow designed around your real content process.": "围绕你真实创作流程设计的 AI 内容管理工作流。",
+    "One system for your content.": "一个系统，管理你的所有内容。",
+    "Google Sheets as the control center, Gemini as the content engine, and performance data to continuously improve your next post.": "以 Google Sheets 为控制中心，Gemini 为内容引擎，用数据表现持续改善下一条内容。",
+    "✓ Generate ideas, hooks and scripts": "✓ 生成选题、开头钩子与脚本",
+    "✓ Track publishing and performance": "✓ 追踪发布与数据表现",
+    "✓ Analyze views, saves, shares and comments": "✓ 分析播放、收藏、分享与评论",
+    "✓ Generate the next content idea": "✓ 生成下一个内容创意",
+
+    /* About page */
+    "ABOUT LAOYU": "关于 LAOYU",
+    "Stay curious. Keep improving.": "保持好奇，持续改善。",
+    "Lead with thinking. Improve with AI.": "以思维引领，用 AI 提升。",
+    "What LAOYU stands for": "LAOYU 的理念",
+    "LAOYU turns real-world problems into practical solutions using AI, productivity, manufacturing excellence, manager thinking and continuous improvement.": "LAOYU 运用 AI、效率方法、卓越制造、管理者思维与持续改善，把真实问题变成实用的解决方案。",
+    "Our principles": "我们的原则",
+    "🎯 Practical — useful over complicated.": "🎯 实用 —— 有用胜过复杂。",
+    "🧠 Thinking — understand the problem first.": "🧠 思考 —— 先理解问题。",
+    "🤖 AI-powered — automate where it creates value.": "🤖 AI 驱动 —— 在能创造价值的地方实现自动化。",
+    "📈 Continuous improvement — make the next version better.": "📈 持续改善 —— 让下一版更好。",
+
+    /* Contact page */
+    "Let's connect.": "保持联系。",
+    "Have a question, collaboration idea or feedback for LAOYU?": "对 LAOYU 有疑问、合作想法或反馈？",
+    "Send a message": "发送消息",
+    "Email:": "电子邮件：",
+    "Questions, collaborations or feedback are all welcome. Drop an email anytime.": "欢迎提问、合作或反馈，随时发邮件联系。",
+    "Find LAOYU online": "在网上找到 LAOYU",
+
+    /* Digital Twin redesign (Oct 2026) — hero */
+    "YEARS ON THE SHOP FLOOR": "年车间一线经验",
+    "FREE TOOLS": "免费工具",
+    "BILINGUAL": "中英双语",
+    "LIVE LINE · SIMULATION": "实时产线 · 模拟演示",
+    "% OEE": "% 综合效率",
+    "AI VISION QC": "AI 视觉质检",
+    "INSPECTED": "已检测",
+    "REJECTED BY AI": "AI 剔除",
+    "ESCAPED TO CUSTOMER": "流出到客户",
+    "AI ALERT · DEMO": "AI 提醒 · 演示",
+    "HOVER A MACHINE TO EXPLORE": "把鼠标移到设备上探索",
+    "CONTROL ROOM": "中控室",
+    "AI ROBOT CELL": "AI 机器人工站",
+    "CNC / INPUT": "CNC / 投料",
+    "PRESS / INPUT": "冲压机 / 投料",
+    "PACK / OUTPUT": "包装 / 产出",
+    "REJECT": "不良品",
+    "DEFECT FOUND": "发现缺陷",
+    "Vision QC caught a defect — rejected before it reached the customer.": "视觉质检发现一个缺陷，在流到客户之前就已剔除。",
+    "CNC spindle temperature rising — plan a check before it stops the line.": "CNC 主轴温度在上升，趁停线之前安排检查。",
+    "Robot cycle time stable — no action needed.": "机器人节拍稳定，无需处理。",
+    "Shift handover ready — 3 open actions carried over.": "交接班已就绪，3 项未完成行动已转交。",
+    "Changeover on Line 01 finished 6 minutes faster than standard.": "01 线换线比标准快了 6 分钟。",
+    "TOPIC": "主题",
+    "Explore →": "探索 →",
+
+    /* Digital Twin redesign — stations */
+    "STATION 01": "工站 01",
+    "STATION 02": "工站 02",
+    "STATION 03": "工站 03",
+    "STATION 04": "工站 04",
+    "INTAKE": "投入",
+    "PROCESS": "加工",
+    "TOOLING": "工装",
+    "OUTPUT": "产出",
+    "01 · INTAKE": "01 · 投入",
+    "02 · PROCESS": "02 · 加工",
+    "03 · TOOLING": "03 · 工装",
+    "04 · OUTPUT": "04 · 产出",
+    "What LAOYU Covers": "LAOYU 讲什么",
+    "Four lines of thinking. One goal: better work on the floor.": "四条思路，一个目标：让一线工作做得更好。",
+    "RUNNING": "运行中",
+    "● ONLINE": "● 在线",
+    "QUALITY PASSED": "质量合格",
+    "BAY A": "A 区",
+    "BAY B": "B 区",
+    "BAY C": "C 区",
+    "BAY D": "D 区",
+
+    /* Digital Twin redesign — line status ticker */
+    "LINE 01": "01 线",
+    "OEE": "综合效率",
+    "PREDICTIVE MAINTENANCE": "预测性维护",
+    "WATCHING": "监测中",
+    "LANGUAGE": "语言",
+    "TIKTOK": "TIKTOK",
+    "DATA": "数据",
+    "SIMULATED": "模拟",
+
+    /* Digital Twin redesign — about / contact */
+    "Practical — useful over complicated.": "实用 —— 有用胜过复杂。",
+    "Thinking — understand the problem first.": "思考 —— 先理解问题。",
+    "AI-powered — automate where it creates value.": "AI 驱动 —— 在能创造价值的地方实现自动化。",
+    "Continuous improvement — make the next version better.": "持续改善 —— 让下一版更好。",
+
+    /* Tool Crib — Resources page (Phase 1) */
+    "One sign-up unlocks all 8 tools.": "注册一次，解锁全部 8 个工具。",
+    "One sign-up unlocks all 16 tools.": "注册一次，解锁全部 16 个工具。",
+    "16 FREE TOOLS": "16 个免费工具",
+    "Leave your name and email once and every tool opens instantly on this browser. Free, no payment.": "只需留下一次姓名和邮箱，在这个浏览器上每个工具都能立即打开。完全免费。",
+    "8 FREE TOOLS": "8 个免费工具",
+    "FIND YOUR TOOL →": "找到你的工具 →",
+    "Welcome back, {name}. Your pass is active, so every tool opens instantly.": "欢迎回来，{name}。你的通行证已生效，每个工具都能直接打开。",
+    "✓ PASS ACTIVE": "✓ 通行证已生效",
+    "TOOL FINDER": "工具查找",
+    "STEP 1": "第 1 步",
+    "What's your problem today?": "你今天遇到什么问题？",
+    "Pick a problem and the right tool lights up.": "选一个问题，合适的工具就会亮起来。",
+    "Same mistake keeps happening": "同样的错误一再发生",
+    "Shift handover is messy": "交接班一团乱",
+    "Short of manpower": "人手不够",
+    "No clear KPI view": "看不清 KPI",
+    "My day is chaos": "每天手忙脚乱",
+    "Actions never get closed": "行动项总是关不掉",
+    "Team stopped caring": "团队不再上心",
+    "Want AI to save me time": "想用 AI 节省时间",
+    "ROLE": "职位",
+    "TYPE": "类型",
+    "All": "全部",
+    "Supervisor": "主管",
+    "Engineer": "工程师",
+    "Manager": "经理",
+    "Templates": "模板",
+    "Trackers": "追踪表",
+    "Calculators": "计算器",
+    "Checklists": "清单",
+    "AI Prompts": "AI 提示词",
+    "tools ready": "个工具可用",
+    "tool ready": "个工具可用",
+    "✕ Clear filters": "✕ 清除筛选",
+    "No tool matches that yet.": "暂时还没有符合的工具。",
+    "REQUEST THIS TOOL →": "申请这个工具 →",
+    "Repeated Mistake Worksheet": "重复错误改善工作表",
+    "Shift Handover Template": "交接班模板",
+    "Manpower Gap Calculator": "人力缺口计算器",
+    "Production KPI Dashboard": "生产 KPI 仪表板",
+    "Supervisor Daily Planner": "主管每日计划表",
+    "Weekly Action Tracker": "每周行动追踪表",
+    "Quiet Quitting Early-Warning Checklist": "员工默默躺平预警清单",
+    "AI Prompt Pack for Operations Managers": "运营经理 AI 提示词包",
+    "Find the real cause so the same mistake stops coming back.": "找到真正的原因，让同样的错误不再出现。",
+    "Hand over the shift without losing a single open issue.": "交接班时，不漏掉任何一个未完成的问题。",
+    "Know how many people you're short before the shift starts.": "开班前就知道还缺多少人。",
+    "Output, yield and downtime on one page in 2 minutes a day.": "每天 2 分钟，产量、良率和停机一页看清。",
+    "Start every shift knowing your top 3 priorities.": "每个班开始时，就清楚最重要的 3 件事。",
+    "Every open action, owner and due date. Overdue ones flag themselves.": "每个行动项、负责人和期限一目了然，逾期会自动标出。",
+    "Spot the early signs that a good employee is checking out.": "及早发现好员工开始“躺平”的信号。",
+    "10 ready prompts to write reports, analyse problems and plan faster.": "10 个现成提示词，更快地写报告、分析问题和做计划。",
+    "20 min": "20 分钟",
+    "10 min": "10 分钟",
+    "15 min": "15 分钟",
+    "Fill on screen or print": "可在线填写或打印",
+    "Instant result": "即时计算",
+    "Works on your phone": "手机可用",
+    "2 min a day": "每天 2 分钟",
+    "5 min a day": "每天 5 分钟",
+    "Excel · Google Sheets · WPS": "Excel · Google Sheets · WPS",
+    "Overdue alerts": "逾期提醒",
+    "Export to Excel": "可导出到 Excel",
+    "Print or save as PDF": "可打印或另存为 PDF",
+    "10 prompts": "10 个提示词",
+    "One-tap copy": "一键复制",
+    "TEMPLATE": "模板",
+    "CALCULATOR": "计算器",
+    "TRACKER": "追踪表",
+    "CHECKLIST": "清单",
+    "AI PROMPTS": "AI 提示词",
+    "OPEN TOOL →": "打开工具 →",
+    "▶ Watch the video": "▶ 观看视频",
+    "NEW": "新",
+    "MATCH": "匹配",
+
+    /* New problem-solving tools (Oct 2026) */
+    "PRODUCTION PROBLEMS": "生产问题",
+    "PEOPLE & MANAGEMENT": "人员与管理",
+    "Machine keeps breaking down": "设备老是出故障",
+    "Output or OEE too low": "产量或 OEE 太低",
+    "Quality problem or defects": "质量问题或缺陷",
+    "Customer complaint": "客户投诉",
+    "Need a tough conversation": "需要进行一次困难对话",
+    "Too few people can run key jobs": "关键岗位会做的人太少",
+    "Hard decision to make": "有个难做的决定",
+    "Need support from management": "需要上级支持",
+    "Problem solvers": "问题解决工具",
+    "PROBLEM SOLVER": "问题解决",
+    "Downtime Troubleshooter": "停机排查工具",
+    "OEE Loss Calculator": "OEE 损失计算器",
+    "Fishbone + 5-Why Builder": "鱼骨图 + 5 个为什么",
+    "8D Report Builder": "8D 报告生成器",
+    "Team Skills Matrix": "团队技能矩阵",
+    "Difficult Conversation Planner": "困难对话准备表",
+    "Escalation Report Builder": "升级报告生成器",
+    "Decision Matrix": "决策矩阵",
+    "Machine stopped? Safe checks in the right order, likely causes and when to escalate.": "设备停了？按正确顺序的安全检查、最可能的原因，以及何时升级。",
+    "See where your shift's minutes went, what it cost, and fix the biggest loss first.": "看清一个班的时间都去哪了、损失多少，先解决最大的损失。",
+    "List causes under the 6Ms, drill the suspects with 5 Whys, leave with a real fix.": "按 6M 列出原因，用 5 个为什么深挖嫌疑原因，得到真正的对策。",
+    "Customer complaint? Work through all 8 steps with a progress bar, then print and send.": "客户投诉？借助进度条完成 8 个步骤，然后打印发送。",
+    "See who can run what, spot single points of failure and get a training plan.": "看清谁会做什么，找出单点风险，并得到培训计划。",
+    "Plan a performance or behaviour talk in 10 minutes and walk in with a script.": "10 分钟准备好一次绩效或行为谈话，带着话术走进去。",
+    "Turn a floor problem into a report management can act on: cost, risk and your ask.": "把现场问题变成管理层能决策的报告：成本、风险和你的请求。",
+    "Weight what matters, score the options and get a clear, defensible choice.": "给重要的标准加权、为方案打分，得到清晰且站得住脚的选择。",
+    "8 common problems": "8 种常见问题",
+    "Downtime clock": "停机计时",
+    "2 min": "2 分钟",
+    "30 min": "30 分钟",
+    "Print as A3": "可打印为 A3",
+    "8 steps": "8 个步骤",
+    "Risk alerts": "风险提醒",
+    "Ready-made script": "现成话术",
+    "Cost impact calculator": "成本影响计算",
+    "Copy as email": "可复制为邮件",
+    "Ready templates": "现成模板",
+    "Robustness check": "稳健性检查",
+
+    /* Language-purity fixes (Oct 2026) */
+    "English & Chinese": "中英双语",
+    "ENGLISH · CHINESE": "英文 · 中文",
+    "DAY 1": "第 1 天",
+    "DAY 365": "第 365 天",
+    "M-01": "机台 01",
+    "M-02": "机台 02",
+    "M-03": "机台 03",
+    "M-04": "机台 04",
+    "T-01": "工具 01",
+    "T-02": "工具 02",
+    "T-03": "工具 03",
+    "T-04": "工具 04",
+    "T-05": "工具 05",
+    "T-06": "工具 06",
+    "T-07": "工具 07",
+    "T-08": "工具 08",
+    "T-09": "工具 09",
+    "T-10": "工具 10",
+    "T-11": "工具 11",
+    "T-12": "工具 12",
+    "T-13": "工具 13",
+    "T-14": "工具 14",
+    "T-15": "工具 15",
+    "T-16": "工具 16",
+
+    /* Resources 2.0 (Nov 2026) */
+    "LAOYU RESOURCES 2.0": "老鱼资源 2.0",
+    "Practical AI tools, automation workflows and productivity solutions for real workplace challenges.": "实用的 AI 工具、自动化流程和效率方案，解决真实的工作难题。",
+    "SEARCH": "搜索",
+    "Popular:": "热门：",
+    "downtime": "停机",
+    "handover": "交接班",
+    "root cause": "根本原因",
+    "manpower": "人力",
+    "free tools": "免费工具",
+    "AI demos": "AI 演示",
+    "need no sign-up": "无需注册",
+    "One sign-up unlocks 16 of the 24 tools.": "注册一次，解锁 24 个工具中的 16 个。",
+    "The other 8 (AI demos and AI tools) need no sign-up. The 16 ask for your name and email once, then open instantly on this browser.": "其余 8 个（AI 演示和 AI 工具）无需注册。这 16 个只需留一次姓名和邮箱，之后在这个浏览器上都能直接打开。",
+    "Prefer email?": "更想发邮件？",
+    "Tell me what you need. I read every message.": "告诉我你的需要，每条消息我都会看。",
+    "solution paths": "解决路径",
+    "languages": "种语言",
+    "AI demos are open to everyone, with no sign-up. Tools ask for your name and email once, then open instantly on this browser.": "AI 演示对所有人开放，无需注册。工具只需留一次姓名和邮箱，之后在这个浏览器上都能直接打开。",
+    "100% FREE": "完全免费",
+    "CHOOSE A GOAL": "选择目标",
+    "What do you want to improve?": "你想改善什么？",
+    "Pick a goal to see the resources that help.": "选择一个目标，查看能帮上忙的资源。",
+    "TRY IT NOW": "立即体验",
+    "AI DEMOS": "AI 演示",
+    "See AI solve a real shift problem": "看 AI 如何解决真实的班次问题",
+    "These demos run in your browser with simulated AI, using sample data. Nothing you type is sent anywhere.": "这些演示在你的浏览器中用模拟 AI 运行，使用示例数据。你输入的内容不会发送到任何地方。",
+    "STEP 2": "第 2 步",
+    "STEP 3": "第 3 步",
+    "RESOURCE LIBRARY": "资源库",
+    "All resources": "全部资源",
+    "Search by name or problem, then filter.": "按名称或问题搜索，再进行筛选。",
+    "AI-POWERED ONLY": "只看 AI 相关",
+    "CATEGORY": "分类",
+    "LEVEL": "难度",
+    "No resource matches that yet.": "暂时还没有符合的资源。",
+    "SOLUTION PATHS": "解决路径",
+    "Follow a proven path": "沿着验证过的路径走",
+    "Each path links resources in the order they work best together.": "每条路径按最佳配合顺序把资源串联起来。",
+    "AI DEMO": "AI 演示",
+    "AI Daily Production Report | LAOYU": "AI 每日生产报告 | LAOYU 老鱼",
+    "AI Root Cause Assistant | LAOYU": "AI 根本原因助手 | LAOYU 老鱼",
+    "AI Shift Handover Assistant | LAOYU": "AI 交接班助手 | LAOYU 老鱼",
+
+    /* AI Hub (Nov 2026) */
+    "AI TOOLS": "AI 工具",
+    "LEARN": "学习",
+    "AUTOMATION LAB": "自动化实验室",
+    "AI Tools": "AI 工具",
+    "LAOYU · MANUFACTURING × AI": "老鱼 · 制造 × AI",
+    "Practical AI for manufacturing leaders.": "写给制造业管理者的实用 AI。",
+    "Free tools for supervisors, engineers and managers: OEE, shift handover, 8D, root cause and more.": "为主管、工程师和经理准备的免费工具：OEE、交接班、8D、根因分析等。",
+    "EXPLORE AI TOOLS →": "探索 AI 工具 →",
+    "FREE RESOURCES": "免费资源",
+    "Learn AI": "学习 AI",
+    "Use AI": "使用 AI",
+    "Build with AI": "用 AI 创造",
+    "Explore the Hub": "探索中心",
+    "AI Assistant": "AI 助手",
+    "Learning Centre": "学习中心",
+    "Automation Lab": "自动化实验室",
+    "ALL TOOLS →": "全部工具 →",
+    "OPEN LIBRARY →": "打开资源库 →",
+    "COMING SOON": "即将推出",
+    "Making AI Practical for Everyday Work.": "让 AI 真正用于日常工作。",
+    "ASK LAOYU →": "问老鱼 →",
+    "OUR STORY": "品牌故事",
+    "Our Story": "品牌故事",
+    "Our Story | LAOYU": "品牌故事 | LAOYU 老鱼",
+    "Page not found | LAOYU": "页面不存在 | LAOYU 老鱼",
+    "ERROR 404": "错误 404",
+    "Page not found.": "页面不存在。",
+    "This page has moved or no longer exists. Try the home page or open the toolbox.": "这个页面已移动或不存在。请返回首页或打开工具箱。",
+    "BACK TO HOME →": "返回首页 →",
+    "BROWSE FREE RESOURCES →": "浏览免费资源 →",
+    "Switch to dark mode": "切换到深色模式",
+    "Switch to light mode": "切换到浅色模式",
+    "Practical tools for manufacturing, management, quality and daily work.": "面向制造、管理、质量和日常工作的实用工具。",
+    "AI Tools | LAOYU": "AI 工具 | LAOYU 老鱼",
+    "Excel Formula Assistant | LAOYU": "Excel 公式助手 | LAOYU 老鱼",
+    "Meeting Minutes Generator | LAOYU": "会议纪要生成器 | LAOYU 老鱼",
+    "CAPA Action Planner | LAOYU": "CAPA 措施计划 | LAOYU 老鱼",
+    "Downtime Analysis Assistant | LAOYU": "停机分析助手 | LAOYU 老鱼",
+    "Email Writing Assistant | LAOYU": "邮件写作助手 | LAOYU 老鱼",
+
+    /* Page titles */
+    "LAOYU | Work Smarter. Create Better.": "LAOYU 老鱼 | 工作更聪明，创造更出色",
+    "LAOYUTALKS | LAOYU": "老鱼说 | LAOYU 老鱼",
+    "Resources | LAOYU": "资源 | LAOYU 老鱼",
+    "AI Content Brain | LAOYU": "AI 内容大脑 | LAOYU 老鱼",
+    "About | LAOYU": "关于 | LAOYU 老鱼",
+    "Downtime Troubleshooter | LAOYU": "停机排查工具 | LAOYU 老鱼",
+    "OEE Loss Calculator | LAOYU": "OEE 损失计算器 | LAOYU 老鱼",
+    "Fishbone + 5-Why Builder | LAOYU": "鱼骨图 + 5 个为什么 | LAOYU 老鱼",
+    "8D Report Builder | LAOYU": "8D 报告生成器 | LAOYU 老鱼",
+    "Team Skills Matrix | LAOYU": "团队技能矩阵 | LAOYU 老鱼",
+    "Difficult Conversation Planner | LAOYU": "困难对话准备表 | LAOYU 老鱼",
+    "Escalation Report Builder | LAOYU": "升级报告生成器 | LAOYU 老鱼",
+    "Decision Matrix | LAOYU": "决策矩阵 | LAOYU 老鱼",
+    "AI Prompt Pack for Operations Managers | LAOYU": "运营经理 AI 提示词包 | LAOYU 老鱼",
+    "Manpower Gap Calculator | LAOYU": "人力缺口计算器 | LAOYU 老鱼",
+    "Production KPI Dashboard | LAOYU": "生产 KPI 仪表板 | LAOYU 老鱼",
+    "Quiet Quitting Early-Warning Checklist | LAOYU": "员工默默躺平预警清单 | LAOYU 老鱼",
+    "Repeated Mistake Worksheet | LAOYU": "重复错误改善工作表 | LAOYU 老鱼",
+    "Shift Handover Template | LAOYU": "交接班模板 | LAOYU 老鱼",
+    "Supervisor Daily Planner | LAOYU": "主管每日计划表 | LAOYU 老鱼",
+    "Weekly Action Tracker | LAOYU": "每周行动追踪表 | LAOYU 老鱼",
+    "Contact | LAOYU": "联系 | LAOYU 老鱼",
+
+    /* LAOYUTALKS 3.0 homepage */
+    "LAOYUTALKS | Solve Real Problems. Work Smarter with AI.": "LAOYUTALKS 老鱼说 | 解决真实问题，用 AI 更聪明地工作",
+    "Learn": "学习",
+    "AI Lab": "AI 实验室",
+    "Practical AI × Manufacturing × Workplace Productivity": "实用 AI × 制造业 × 职场效率",
+    "Practical AI tools, resources and automation solutions designed to help people improve productivity and solve real workplace challenges.": "实用的 AI 工具、资源和自动化方案，帮助你提升效率，解决真实的工作难题。",
+    "Explore Free Tools": "浏览免费工具",
+    "Discover LAOYUTALKS": "了解 LAOYUTALKS",
+    "Runs in your browser. Your numbers are not sent anywhere.": "在你的浏览器中运行，你输入的数字不会被发送到任何地方。",
+    "Our philosophy": "我们的理念",
+    "Think First": "先思考",
+    "Understand the problem before you pick a tool.": "先弄清问题，再选工具。",
+    "Improve Always": "持续改进",
+    "Small, steady improvements that last.": "小步改进，长期坚持。",
+    "Turn ideas into working tools and workflows.": "把想法变成能用的工具和流程。",
+    "Problems we solve": "我们解决的问题",
+    "Pick a problem to see the tools that help.": "选一个问题，查看对应的工具。",
+    "Manufacturing & Production": "制造与生产",
+    "OEE, downtime and daily reports": "OEE、停机与每日报告",
+    "Quality & Problem Solving": "质量与问题解决",
+    "8D, 5 Why, fishbone and CAPA": "8D、5 个为什么、鱼骨图与 CAPA",
+    "Management & Leadership": "管理与领导力",
+    "Manpower, skills and hard conversations": "人力、技能与难谈的对话",
+    "Workplace Productivity": "职场效率",
+    "Planning, handover and action tracking": "计划、交接班与行动跟进",
+    "Data & Reporting": "数据与报告",
+    "KPI dashboards and loss analysis": "KPI 看板与损失分析",
+    "AI & Automation": "AI 与自动化",
+    "Prompts, AI demos and AI tools": "提示词、AI 演示与 AI 工具",
+    "Featured resources": "精选资源",
+    "Six free tools people start with.": "大家最先使用的六个免费工具。",
+    "All resources →": "全部资源 →",
+    "Learn with LAOYU": "跟老鱼学习",
+    "Short videos on real workplace problems, each paired with a free tool.": "讲真实工作问题的短视频，每条都配有一个免费工具。",
+    "Follow @laoyu.talks ↗": "关注 @laoyu.talks ↗",
+    "ASK LAOYU": "问老鱼",
+    "Three AI assistants for manufacturing, quality and management questions are being built in the AI Lab.": "面向制造、质量和管理问题的三个 AI 助手，正在 AI 实验室中开发。",
+    "Open AI Tools →": "打开 AI 工具 →",
+    "Manufacturing Assistant": "制造助手",
+    "Output, OEE, downtime and shift routines.": "产量、OEE、停机与班次管理。",
+    "Quality & Problem-Solving Assistant": "质量与问题解决助手",
+    "Root cause, 8D and CAPA.": "根本原因、8D 与 CAPA。",
+    "Productivity & Management Assistant": "效率与管理助手",
+    "Planning, people and reporting.": "计划、人员与汇报。",
+    "In development": "开发中",
+    "The assistants are not live yet. What works today: the prompt playground here, the AI tools, and the site helper for guided answers.": "这些助手尚未上线。目前可用的有：这里的提示词练习场、AI 工具，以及提供引导式回答的网站助手。",
+    "Ask the site helper": "问问网站助手",
+    "Real-world impact": "真实应用",
+    "Worked examples using sample data. Real case studies will be added here.": "以下是使用示例数据的演示，真实案例会陆续补充到这里。",
+    "Our story": "品牌故事",
+    "My years in manufacturing taught me that improvement doesn't always need more resources. Sometimes it just needs a smarter way to work.": "多年的制造业经历让我明白，改善并不总是需要更多资源，有时只需要更聪明的工作方式。",
+    "Read our story": "阅读我们的故事",
+    "Join the community": "加入社区",
+    "Follow @laoyu.talks on TikTok, or get an email when a new free resource is released.": "在 TikTok 关注 @laoyu.talks，或在有新的免费资源时收到邮件通知。",
+    "Follow on TikTok ↗": "在 TikTok 关注 ↗",
+    "Think First. Improve Always. Build with AI.": "先思考，持续改进，用 AI 构建。",
+
+    /* Resources 3.0 */
+    "LAOYU RESOURCES 3.0": "老鱼资源 3.0",
+    "CHOOSE A CATEGORY": "选择分类",
+    "Browse by category": "按分类浏览",
+    "Pick a category to see its resources.": "选择一个分类，查看其中的资源。",
+    "DIFFICULTY": "难度",
+    "ACCESS": "获取方式",
+    "Search by name or problem, then filter. Preview any resource before you open it.": "按名称或问题搜索，再筛选。打开前可以先预览任何资源。",
+
+    /* AI Lab */
+    "AI Lab | LAOYU": "AI 实验室 | LAOYU 老鱼",
+    "Assistants for manufacturing, quality and management questions. Pick an assistant, ask a question and get a structured answer you can act on.": "解答制造、质量和管理问题的助手。选择一个助手，提出问题，得到可以直接执行的结构化回答。",
+    "Choose an assistant": "选择助手",
+    "Your question": "你的问题",
+    "Send": "发送",
+    "Responsible use": "负责任地使用",
+    "Do not enter confidential company data, customer names, personal data or anything you would not post publicly.": "请勿输入公司机密数据、客户名称、个人信息，或任何你不会公开发布的内容。",
+    "Answers are general guidance, not professional, legal, safety or medical advice. Check them against your own procedures before acting.": "回答只是一般性指引，不构成专业、法律、安全或医疗建议。行动前请对照你自己的流程核实。",
+    "Safety comes first: for any hazard, follow your site's lockout and escalation rules, not a chat answer.": "安全第一：遇到任何危险，请遵守你所在工厂的上锁挂牌和上报规定，而不是依据聊天回答。",
+    "Privacy and how it works": "隐私与运行方式",
+    "Three assistants for manufacturing, quality and management questions. Try the prototype in the AI Lab.": "解答制造、质量和管理问题的三个助手。到 AI 实验室试用原型。",
+    "Open the AI Lab →": "打开 AI 实验室 →",
+    "Open the AI Lab": "打开 AI 实验室",
+    "Prototype": "原型",
+    "The AI Lab is a prototype: answers come from built-in guidance, not a live AI. Live AI will be switched on once the server is set up.": "AI 实验室目前是原型：回答来自内置指引，不是实时 AI。服务器配置完成后将接入实时 AI。",
+
+    /* Automation Lab */
+    "Automation Lab | LAOYU": "自动化实验室 | LAOYU 老鱼",
+    "Automation": "自动化",
+    "Take repetitive work off your team.": "把重复性工作从团队身上拿走。",
+    "Practical workflows built with tools most teams already have: Google Sheets, Forms, Apps Script, AppSheet and an AI chat tool. Each one shows the problem, the steps and an example of the result.": "用大多数团队已有的工具搭建实用的工作流程：Google Sheets、Forms、Apps Script、AppSheet 和 AI 对话工具。每个流程都说明问题、步骤和结果示例。",
+    "Workflow library": "工作流程库",
+    "Filter by the tools you have. Open a workflow to see the steps.": "按你已有的工具筛选，打开工作流程查看步骤。",
+    "Before you automate": "自动化之前",
+    "Fix the process first. Automating a messy process only makes the mess faster.": "先理顺流程。把混乱的流程自动化，只会让混乱来得更快。",
+    "Start with one line or one team, run it alongside the old way, then roll out.": "先在一条产线或一个团队试行，与旧方法并行，再推广。",
+    "Check your company's rules before putting work data into any AI tool or new app.": "把工作数据放进任何 AI 工具或新应用之前，先确认公司的规定。",
+    "Name an owner for every automation, so someone fixes it when it breaks.": "每个自动化流程都要指定负责人，出问题时有人修复。",
+    "Want one of these for your team?": "想为你的团队搭建其中一个？",
+    "These are guides, not ready-made apps. If you would like help adapting one to your site, get in touch.": "这些是操作指南，不是现成的应用。如果你需要帮助把它用到自己的工厂，欢迎联系。",
+    "Contact LAOYU": "联系老鱼",
+    "Eliminate repetitive work. Build smarter workflows.": "消除重复工作，搭建更聪明的工作流程。",
+    /* Training Matrix (training-matrix.html) */
+    "Training Matrix": "培训矩阵",
+    "Who is qualified for which process?": "谁有资格做哪个工序？",
+    "See certified coverage by department, find the gaps and keep expiry dates in view.": "按部门查看认证覆盖率，找出缺口，掌握到期日期。",
+    "View departments": "查看部门",
+    "Set up the matrix": "设置矩阵",
+    "Demo data, saved only in this browser. Not a secure record system.": "演示数据，仅保存在本浏览器中，不是安全的记录系统。",
+    "Department overview": "部门总览",
+    "Certified coverage for each process group. Select a department to see its operators.": "各工序组的认证覆盖率。选择一个部门查看其操作员。",
+    "Add departments, operators, process groups and processes.": "新增部门、操作员、工序组和工序。",
+    "Export all .csv": "导出全部 .csv",
+    "Reset demo data": "重置演示数据",
+    "Sign-up only. This is not a password-protected login.": "仅需登记，不是密码保护的登录。",
+    "This browser isn't saving changes. They'll be lost when you close the page.": "本浏览器无法保存更改，关闭页面后更改将丢失。",
+    "Practical automation for manufacturing and office teams, built with tools most teams already have: Google Sheets, Forms, Apps Script, AppSheet and AI.": "为制造和办公团队打造的实用自动化，所用工具大多数团队都已具备：Google Sheets、Forms、Apps Script、AppSheet 和 AI。",
+    "Find My Automation Opportunity": "找到我的自动化机会",
+    "Explore Automation Library": "浏览自动化资源库",
+    "How every workflow is built": "每个工作流程的构成",
+    "Input": "输入", "Trigger": "触发", "Process": "处理", "Output": "输出",
+    "Shift numbers": "班次数据",
+    "Every morning, 06:30": "每天早上 06:30",
+    "Summarise by line": "按产线汇总",
+    "Report in every manager's inbox": "报告送达每位管理者的邮箱",
+    "Example: daily production report": "示例：每日生产报告",
+    "What the Automation Lab is for": "自动化实验室的用途",
+    "Help people eliminate repetitive work, simplify processes and build smarter workflows using practical automation and AI.": "用实用的自动化和 AI，帮助大家消除重复工作、简化流程、搭建更聪明的工作流程。",
+    "What takes up your team's time?": "什么最占用团队的时间？",
+    "Pick the task that sounds most familiar. The library will show the workflows that fit.": "选出最熟悉的任务，资源库会显示适合的工作流程。",
+    "Featured manufacturing workflows": "精选制造业工作流程",
+    "Three workflows that suit most production sites.": "适合大多数生产现场的三个工作流程。",
+    "See all workflows →": "查看全部工作流程 →",
+    "Automation Library": "自动化资源库",
+    "Search, or filter by category, difficulty, build type and where it is used. Open a workflow for the steps.": "可搜索，或按类别、难度、实现方式和适用领域筛选。打开工作流程查看步骤。",
+    "Don't just learn about AI. Use it to improve the way you work.": "不要只是学习 AI，要用它改进你的工作方式。",
+    "Pick one repetitive task and automate it this week.": "选一项重复性任务，本周就把它自动化。",
+    "Browse all resources": "浏览全部资源",
+    "Workflow Builder": "工作流程设计器",
+    "ASK LAOYU – Automation Advisor": "问老鱼 – 自动化顾问",
+    "Answer four short questions about a repetitive task and get a suggested automation approach, the tools, a workflow, the effort involved and an estimate of the time it could save.": "回答关于一项重复性任务的四个简短问题，即可获得建议的自动化方案、工具、流程、所需投入，以及可节省时间的估算。",
+    "Describe your own task →": "描述你自己的任务 →",
+    "Real-world case studies": "实践案例",
+    "Six manufacturing examples, from the manual process to the automation, with what to expect and what was learned.": "六个制造业实例：从手工流程到自动化，包括预期效果和经验教训。",
+    "Learning resources": "学习资源",
+    "Keep going with the rest of LAOYUTALKS.": "继续探索老鱼说的更多内容。",
+    "Short videos on practical AI and automation, each paired with a tool.": "实用 AI 与自动化短视频，每个都配有对应工具。",
+    "Watch the lessons →": "观看课程 →",
+    "Resources library": "资源库",
+    "Templates, calculators, checklists and problem solvers for the shop floor.": "面向车间的模板、计算器、检查清单和问题解决工具。",
+    "Browse resources →": "浏览资源 →",
+    "Apps Script templates": "Apps Script 模板",
+    "Five ready-to-paste scripts for reports, reminders, documents and approvals.": "五段可直接粘贴使用的脚本，用于报告、提醒、文档和审批。",
+    "See the scripts →": "查看脚本 →",
+    "Production KPI dashboard": "生产 KPI 看板",
+    "An Excel dashboard template for daily output, scrap and downtime.": "用于每日产量、报废和停机的 Excel 看板模板。",
+    "Get the template →": "获取模板 →",
+    "AI prompt pack": "AI 提示词包",
+    "Tested prompts for reports, emails, root cause and meetings.": "经过验证的提示词，适用于报告、邮件、根本原因分析和会议。",
+    "Open the prompt pack →": "打开提示词包 →",
+    "Ask manufacturing, quality and management questions.": "提问制造、质量和管理方面的问题。",
+    "Map one process from input to output, then generate a summary you can share with your team. It plans the workflow; it does not run it.": "从输入到输出梳理一个流程，然后生成可与团队分享的总结。它只用于规划流程，不会实际运行。",
+    "Automation ROI Calculator": "自动化投资回报计算器",
+    "Estimate the hours an automation could give back to your team each year.": "估算自动化每年能为团队省下多少工时。",
+    "How this is calculated": "计算方法",
+    "Annual manual hours = employees × hours per week × working weeks.": "每年手工工时 = 员工人数 × 每周小时数 × 工作周数。",
+    "Estimated hours saved = annual manual hours × automation efficiency.": "预计节省工时 = 每年手工工时 × 自动化效率。",
+    "Remaining manual hours = annual manual hours − hours saved.": "剩余手工工时 = 每年手工工时 − 节省工时。",
+    "Estimated labour value saved = hours saved × hourly labour cost.": "预计节省的人工价值 = 节省工时 × 每小时人工成本。",
+    "Productivity improvement = annual manual hours ÷ remaining hours − 1: the same work done in fewer hours means more output per hour on this task.": "效率提升 = 每年手工工时 ÷ 剩余工时 − 1：用更少的时间完成同样的工作，意味着该任务每小时产出更高。",
+    "Prompts, AI tools and automation workflows": "提示词、AI 工具与自动化流程",
+
+    /* Learn */
+    "Learn | LAOYU": "学习 | LAOYU 老鱼",
+    "Learn it, then use it.": "学了就用。",
+    "Short videos on real workplace problems from the shop floor and the management office. Where a free tool helps with the same problem, it is linked right under the video.": "讲车间和管理工作中真实问题的短视频。如果有免费工具能解决同样的问题，就链接在视频下方。",
+    "How to learn with LAOYU": "怎样跟老鱼学习",
+    "Three steps, from idea to working practice.": "三个步骤，从想法到日常实践。",
+    "Watch": "看",
+    "Pick a short video on a problem you have today.": "挑一个与你眼前问题相关的短视频。",
+    "Try": "试",
+    "Open the free tool linked under it and use it on your own numbers.": "打开视频下方链接的免费工具，用你自己的数据试一试。",
+    "Automate": "自动化",
+    "When it works, make it routine with a workflow from the Automation Lab.": "行之有效后，用自动化实验室的工作流程把它变成日常。",
+    "Automation Lab →": "自动化实验室 →",
+    "Videos by topic": "按话题浏览视频",
+    "Videos open on TikTok in a new tab.": "视频会在新标签页中的 TikTok 打开。",
+    "Start here if you are new to AI": "AI 新手从这里开始",
+    "Prompt playground": "提示词练习场",
+    ": paste a prompt and see what is missing.": "：粘贴提示词，看看缺了什么。",
+    "AI Prompt Pack": "AI 提示词包",
+    ": 10 tested prompts for operations managers.": "：10 条经过验证的运营管理提示词。",
+    ": ask the assistants a manufacturing, quality or management question.": "：向助手提问制造、质量或管理问题。",
+    "Written guides": "图文指南",
+    "Short written guides are planned. Until then, every free tool includes setup steps, an AI prompt and its limitations.": "简短的图文指南正在计划中。在此之前，每个免费工具都附有上手步骤、AI 提示词和使用局限说明。",
+    "Browse the free tools": "浏览免费工具",
+    "All videos →": "全部视频 →",
+
+    /* Home — cinematic 3D story */
+    "See the tools →": "查看工具 →",
+    "Manufacturing, quality and management questions": "制造、质量与管理问题",
+    "Illustration · sample data": "示意图 · 示例数据",
+    "SCROLL ↓": "向下滚动 ↓",
+    "Try it now": "马上试试"
+  };
+
+  /* Headings/lines built from several pieces: matched on the whole
+     element's text, replaced as a block so word order reads naturally */
+  var BLOCKS = {
+    "Practical AI for Manufacturing Leaders.":
+      '写给<span>制造业管理者</span><br>的实用 AI。',
+    "Work Smarter. Create Better.":
+      '工作更<span>聪明</span>，<br>创造更<span>出色</span>。',
+    "Fix Real Factory Problems. Faster, with AI.":
+      '解决工厂真问题，<br><span>用 AI 更快一步。</span>',
+    "Work Smarter. Think Better. Build with AI.":
+      '工作更聪明，<br>思考更深入，<span>用 AI 创造。</span>',
+    "AI Tools for Real Work.":
+      '真正用于工作的 <span>AI 工具。</span>',
+    "Find the Right Tool. Solve the Right Problem.":
+      '找到合适的工具，<span>解决真正的问题。</span>',
+    "Practical Tools to Work Smarter.":
+      '实用工具，助你<span>更聪明地工作。</span>',
+    "Turn Ideas Into Action.":
+      '把想法变成<span>行动。</span>',
+    "Stay curious. Keep improving. Lead with thinking. Improve with AI.":
+      '保持好奇，持续改善。<br>以<b style="color:#ff6a00">思维</b>引领，用 <b style="color:#ff6a00">AI</b> 提升。',
+
+    /* LAOYUTALKS 3.0 homepage */
+    "Solve Real Problems. Work Smarter with AI.": '解决真实问题，<span>用 AI 更聪明地工作。</span>',
+
+    /* Legal pages (privacy.html, terms.html). Chinese is for reference; the English version prevails. */
+    "Effective Date: September 2, 2026": "<strong>生效日期：</strong>2026 年 9 月 2 日",
+    "LAOYUTALKS Content Brain respects your privacy. This Privacy Policy explains how information may be used when you use the service or connect your TikTok account.":
+      "LAOYUTALKS Content Brain 尊重你的隐私。本隐私政策说明你在使用本服务或连接 TikTok 账号时，信息可能会被如何使用。",
+    "1. Information We May Access": "1. 我们可能获取的信息",
+    "Depending on the features you use and the permissions you authorize, the service may access information from your TikTok account, such as basic account information and information about your published TikTok videos and their available performance statistics.":
+      "根据你使用的功能和你授权的权限，本服务可能会获取你 TikTok 账号中的信息，例如基本账号信息、你已发布的 TikTok 视频信息及其可用的表现数据。",
+    "2. How Information Is Used": "2. 信息的使用方式",
+    "Information may be used to:": "信息可能用于：",
+    "Display and organize your TikTok content.": "展示和整理你的 TikTok 内容。",
+    "Retrieve available video performance information.": "获取可用的视频表现信息。",
+    "Analyze content performance.": "分析内容表现。",
+    "Generate AI-assisted content recommendations and insights.": "生成 AI 辅助的内容建议与洞察。",
+    "Improve your content planning workflow.": "改进你的内容规划流程。",
+    "3. AI Processing": "3. AI 处理",
+    "Information may be processed by AI services to generate content, summaries, or performance insights. Only information necessary for the requested feature should be submitted for processing.":
+      "信息可能由 AI 服务处理，以生成内容、摘要或表现洞察。只应提交所请求功能所必需的信息进行处理。",
+    "4. Data Sharing": "4. 数据共享",
+    "We do not sell personal information.": "我们不出售个人信息。",
+    "Information may be processed through third-party services required to provide the functionality of the service, including TikTok, Google, and AI service providers.":
+      "为提供本服务的功能，信息可能会通过所需的第三方服务进行处理，包括 TikTok、Google 和 AI 服务提供商。",
+    "5. Data Retention": "5. 数据保留",
+    "Information may be stored in the user's connected Google Sheets or other systems used to operate the service. Users should remove information that is no longer required.":
+      "信息可能存储在用户连接的 Google 表格或用于运营本服务的其他系统中。用户应删除不再需要的信息。",
+    "6. Account Access": "6. 账号访问",
+    "Users may revoke the service's access to their TikTok account through TikTok's account and security settings.":
+      "用户可以通过 TikTok 的账号与安全设置，撤销本服务对其 TikTok 账号的访问权限。",
+    "7. Security": "7. 安全",
+    "Reasonable measures are used to protect information. However, no internet-based service can guarantee absolute security.":
+      "我们采取合理措施保护信息。但任何基于互联网的服务都无法保证绝对安全。",
+    "8. Changes to This Policy": "8. 本政策的变更",
+    "This Privacy Policy may be updated from time to time. The updated version will be published on this website.":
+      "本隐私政策可能会不时更新。更新后的版本将发布在本网站上。",
+    "9. Free Resource Sign-ups": "9. 免费资源注册",
+    "When you unlock a free resource on this website (for example a checklist or prompt pack), we collect the name, email address and optional job role you enter, plus whether you want to hear about new resources. These details are stored in a private Google Sheet owned by LAOYU and are used only to send LAOYU resources and updates. We do not sell them. Answers you type inside a resource are saved only in your own browser and are never sent to us. To be removed, email laoyutalks@gmail.com.":
+      "当你在本网站解锁免费资源（例如清单或提示词包）时，我们会收集你填写的姓名、邮箱地址和选填的职位，以及你是否希望收到新资源通知。这些信息保存在老鱼所有的私人 Google 表格中，仅用于发送老鱼的资源与更新。我们不会出售这些信息。你在资源中输入的内容只保存在你自己的浏览器中，绝不会发送给我们。如需删除你的信息，请发邮件至 <a href=\"mailto:laoyutalks@gmail.com\">laoyutalks@gmail.com</a>。",
+    "10. Contact": "10. 联系方式",
+    "For privacy questions or requests, please contact the service owner through the contact information provided on this website.":
+      "如有隐私相关的问题或请求，请通过本网站提供的联系方式联系服务所有者。",
+    "Welcome to LAOYUTALKS Content Brain. By using this website or connected services, you agree to these Terms of Service.":
+      "欢迎使用 LAOYUTALKS Content Brain。使用本网站或相关服务，即表示你同意本服务条款。",
+    "1. Service": "1. 服务内容",
+    "LAOYUTALKS Content Brain provides tools for organizing TikTok content, generating AI-assisted content, and analyzing published content performance.":
+      "LAOYUTALKS Content Brain 提供用于整理 TikTok 内容、生成 AI 辅助内容以及分析已发布内容表现的工具。",
+    "2. User Responsibility": "2. 用户责任",
+    "Users are responsible for reviewing AI-generated content before publishing or using it. AI-generated information may contain errors and should be reviewed for accuracy, suitability, and compliance with applicable laws and platform policies.":
+      "用户在发布或使用 AI 生成的内容之前，有责任对其进行审核。AI 生成的信息可能存在错误，应审核其准确性、适用性，以及是否符合适用法律和平台政策。",
+    "3. TikTok Integration": "3. TikTok 集成",
+    "If you connect your TikTok account, the service may access information and content permitted by the permissions you authorize. The service only uses information required for the features you enable.":
+      "如果你连接 TikTok 账号，本服务可能会在你授权的权限范围内获取信息和内容。本服务只使用你所启用功能所需的信息。",
+    "4. Third-Party Services": "4. 第三方服务",
+    "The service may interact with third-party platforms, including TikTok, Google, and AI service providers. Their respective terms and policies may also apply.":
+      "本服务可能与第三方平台交互，包括 TikTok、Google 和 AI 服务提供商。它们各自的条款和政策也可能适用。",
+    "5. Availability": "5. 可用性",
+    "We do not guarantee that the service will always be available or error-free. Third-party APIs and services may experience interruptions or changes.":
+      "我们不保证本服务始终可用或没有错误。第三方 API 和服务可能出现中断或变更。",
+    "6. Acceptable Use": "6. 可接受的使用",
+    "Users must not use the service for unlawful activities, abuse third-party services, or violate TikTok's policies.":
+      "用户不得将本服务用于违法活动、滥用第三方服务或违反 TikTok 的政策。",
+    "7. Changes": "7. 变更",
+    "These Terms may be updated from time to time. Continued use of the service after an update constitutes acceptance of the revised Terms.":
+      "本条款可能会不时更新。更新后继续使用本服务，即表示你接受修订后的条款。",
+    "8. Contact": "8. 联系方式",
+    "For questions regarding these Terms, please contact the service owner through the contact information provided on this website.":
+      "如对本条款有疑问，请通过本网站提供的联系方式联系服务所有者。",
+    /* Home — cinematic 3D story: brush-ring title */
+    "Manufacturing × AI": '制造 <em>×</em> AI'
+  };
+
+  var KEY = "laoyuLang";
+  var BASE_KEY = "laoyuLangBase";
+
+  function squash(s) {
+    return String(s).replace(/\s+/g, "");
+  }
+
+  var BLOCK_INDEX = {};
+  Object.keys(BLOCKS).forEach(function (k) { BLOCK_INDEX[squash(k)] = k; });
+
+  function norm(s) {
+    return String(s).replace(/\s+/g, " ").trim();
+  }
+
+  var REVERSE = {};
+  Object.keys(TEXT).forEach(function (en) { REVERSE[TEXT[en]] = en; });
+
+  function browserLang() {
+    var nav = (navigator.language || "").toLowerCase();
+    return nav.indexOf("zh") === 0 ? "zh" : "en";
+  }
+
+  function stored(key) {
+    try { return localStorage.getItem(key); } catch (e) { return null; }
+  }
+
+  /* mode = what the visitor picked: "en", "zh" or "bi" (bilingual).
+     lang = the single language used for menus, buttons and generated
+     text. In bilingual mode it is the last single language chosen. */
+  function loadMode() {
+    var saved = stored(KEY);
+    return saved === "en" || saved === "zh" || saved === "bi" ? saved : browserLang();
+  }
+
+  function loadBase(m) {
+    if (m !== "bi") return m;
+    var saved = stored(BASE_KEY);
+    return saved === "en" || saved === "zh" ? saved : browserLang();
+  }
+
+  var mode = loadMode();
+  var lang = loadBase(mode);
+
+  function t(english) {
+    var zh = TEXT[norm(english)];
+    if (!zh) return english;
+    return mode === "bi" ? pick(english, zh) : lang === "zh" ? zh : english;
+  }
+
+  /* ---------- Bilingual (EN+中) ----------
+     Page scripts ask pick(en, zh) for their text. In EN+中 mode it returns both
+     languages wrapped in invisible markers: START en MID zh END. fixBi() then
+     turns every marker it finds in the page into the English text followed by
+     <span class="biZh"> with the Chinese (a smaller line under headings and
+     paragraphs, " · 中文" after short labels, buttons and links). In attributes
+     (placeholder, title, aria-label…) the two are joined with " · ".        */
+  var BI_S = "\u2062", BI_M = "\u2063", BI_E = "\u2064";
+  var BI_ANY = /[\u2062\u2063\u2064]/;
+  function pick(en, zh) {
+    if (zh === undefined || zh === null || zh === "") return en;
+    if (mode === "bi" && zh !== en) return BI_S + en + BI_M + zh + BI_E;
+    return lang === "zh" ? zh : en;
+  }
+  /* "en · zh" — for places that can only hold plain text */
+  function plain(s) {
+    return String(s).replace(/\u2062/g, "").replace(/\u2063/g, " · ").replace(/\u2064/g, "");
+  }
+  /* Only the visitor's base language — for text that is copied or sent somewhere */
+  function one(s) {
+    return String(s).replace(/\u2062([^\u2063]*)\u2063([^\u2064]*)\u2064/g, function (m, en, zh) {
+      return lang === "zh" ? zh : en;
+    }).replace(/[\u2062\u2063\u2064]/g, "");
+  }
+
+  var INLINE_TAGS = /^(A|BUTTON|LABEL|SUMMARY|SMALL|B|STRONG|EM|I|SPAN|TH|DT|LEGEND|CODE|KBD)$/;
+  function biKind(parent) {
+    if (parent.closest("nav, .links, .langToggle, .btn, button, a, label, summary, .eyebrow, .chip, .lyChip, .tag, .pill, th, select")) return "biIn";
+    var d = "";
+    try { d = getComputedStyle(parent).display; } catch (e) {}
+    if (/^inline/.test(d) || (!d && INLINE_TAGS.test(parent.tagName))) return "biIn";
+    return "biBlk";
+  }
+  var BI_ATTRS = ["placeholder", "title", "aria-label", "alt", "value", "content", "data-tip"];
+  function fixAttrs(el) {
+    if (!el.getAttribute) return;
+    BI_ATTRS.forEach(function (a) {
+      var v = el.getAttribute(a);
+      if (v && BI_ANY.test(v)) el.setAttribute(a, plain(v));
+    });
+  }
+  /* Split one text node at its markers. Chinese that holds markup spans
+     several nodes: everything up to the END marker moves into the span. */
+  /* A sentence built from several pieces ("Biggest loss: " + "Performance" + ".")
+     gets one Chinese span per piece. Keep the English inline and join the
+     Chinese into one span at the end: "最大损失：性能稼动率（速度）。" */
+  var biTouched = [];
+  function mergeBi() {
+    var list = biTouched; biTouched = [];
+    list.forEach(function (p) {
+      if (!p.isConnected) return;
+      ["biBlk", "biIn"].forEach(function (kind) {
+        var spans = [].filter.call(p.children, function (c) {
+          return c.classList.contains("biZh") && c.classList.contains(kind) && !c.classList.contains("biTx");
+        });
+        if (spans.length < 2) return;
+        var first = spans[0];
+        spans.slice(1).forEach(function (s) { while (s.firstChild) first.appendChild(s.firstChild); s.remove(); });
+        p.appendChild(first);
+      });
+    });
+  }
+  function fixText(node) {
+    var p = node.parentNode;
+    if (!p || !BI_ANY.test(node.data)) return;
+    if (biTouched.indexOf(p) < 0) biTouched.push(p);
+    if (p.nodeType === 1 && /^(TITLE|SCRIPT|STYLE)$/.test(p.tagName)) { node.data = one(node.data); return; }
+    if (p.nodeType !== 1 || /^(OPTION|TEXTAREA)$/.test(p.tagName)) { node.data = plain(node.data); return; }
+    var d = node.data.replace(/\u2062/g, ""), m = d.indexOf(BI_M);
+    if (m < 0) { node.data = d.replace(/[\u2063\u2064]/g, ""); return; }
+    node.data = d.slice(0, m);
+    var span = document.createElement("span");
+    span.className = "biZh " + biKind(p);
+    span.setAttribute("lang", "zh-Hans");
+    p.insertBefore(span, node.nextSibling);
+    var rest = d.slice(m + 1), e = rest.indexOf(BI_E), after = null;
+    if (e > -1) {
+      span.appendChild(document.createTextNode(rest.slice(0, e)));
+      if (rest.slice(e + 1)) { after = document.createTextNode(rest.slice(e + 1)); p.insertBefore(after, span.nextSibling); }
+    } else {
+      if (rest) span.appendChild(document.createTextNode(rest));
+      while (span.nextSibling) {
+        var nx = span.nextSibling;
+        if (nx.nodeType === 3 && nx.data.indexOf(BI_E) > -1) {
+          var k = nx.data.indexOf(BI_E);
+          span.appendChild(document.createTextNode(nx.data.slice(0, k)));
+          nx.data = nx.data.slice(k + 1);
+          after = nx;
+          break;
+        }
+        span.appendChild(nx);
+      }
+    }
+    /* In a flex/grid box (buttons, chips) the Chinese would become its own
+       column: keep the English and the Chinese together as one item. */
+    var pd = "";
+    try { pd = getComputedStyle(p).display; } catch (x) {}
+    if (/flex|grid/.test(pd) && node.data.trim()) {
+      var wrap = document.createElement("span");
+      wrap.className = "biWrap";
+      p.insertBefore(wrap, node);
+      wrap.appendChild(node);
+      wrap.appendChild(span);
+    }
+    if (after && BI_ANY.test(after.data)) fixText(after);
+  }
+  function fixBi(root) {
+    if (!root) return;
+    if (root.nodeType === 3) { fixText(root); return; }
+    if (root.nodeType !== 1 && root.nodeType !== 9) return;
+    var el = root.nodeType === 9 ? root.documentElement : root;
+    fixAttrs(el);
+    if (el.querySelectorAll) el.querySelectorAll("[placeholder],[title],[aria-label],[alt],[value],[data-tip],meta[content]").forEach(fixAttrs);
+    var list = [], w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) { return BI_ANY.test(n.data) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT; }
+    }), n;
+    while ((n = w.nextNode())) list.push(n);
+    list.forEach(function (x) { if (x.parentNode && BI_ANY.test(x.data)) fixText(x); });
+    mergeBi();
+    if (BI_ANY.test(document.title)) document.title = one(document.title);
+  }
+  var biBusy = false;
+  function watchBi() {
+    if (!window.MutationObserver) return;
+    new MutationObserver(function (records) {
+      if (biBusy) return;
+      biBusy = true;
+      try {
+        records.forEach(function (r) {
+          if (r.type === "childList") r.addedNodes.forEach(function (x) { fixBi(x); });
+          else if (r.type === "characterData") fixText(r.target);
+          else if (r.type === "attributes") fixAttrs(r.target);
+        });
+        mergeBi();
+        if (BI_ANY.test(document.title)) document.title = one(document.title);
+      } finally { biBusy = false; }
+    }).observe(document.documentElement, { childList: true, subtree: true, characterData: true, attributes: true, attributeFilter: BI_ATTRS });
+  }
+  function biStyle() {
+    if (document.getElementById("biStyle")) return;
+    var s = document.createElement("style");
+    s.id = "biStyle";
+    s.textContent =
+      ".biZh.biBlk{display:block;font-size:.86em;opacity:.85;margin-top:3px;letter-spacing:.02em}" +
+      "h1>.biZh.biBlk,h1 .biZh.biBlk{font-size:.62em;margin-top:6px}" +
+      "h2>.biZh.biBlk,h3>.biZh.biBlk{font-size:.72em}" +
+      ".biZh.biIn{opacity:.85}.biZh.biIn::before{content:\" · \"}" +
+      "html:not([data-bi]) .biZh.biTx{display:none}" +
+      "html[data-bi] .zhOnly{display:block}";
+    (document.head || document.documentElement).appendChild(s);
+  }
+
+  /* Chinese for dictionary text, added next to the English in EN+中 mode */
+  function biTx(html, parent) {
+    var s = document.createElement("span");
+    s.className = "biZh biTx " + biKind(parent);
+    s.setAttribute("lang", "zh-Hans");
+    s.innerHTML = html;
+    return s;
+  }
+
+  function applyBlocks(root) {
+    root.querySelectorAll("h1, h2, h3, h4, p, li").forEach(function (el) {
+      if (el.__laoyuEn === undefined) {
+        var key = BLOCK_INDEX[squash(el.textContent)];
+        if (!key) return;
+        el.__laoyuEn = el.innerHTML;
+        el.__laoyuKey = key;
+        el.setAttribute("data-i18n-block", "");
+      }
+      if (mode === "bi") {
+        el.innerHTML = el.__laoyuEn;
+        el.appendChild(biTx(BLOCKS[el.__laoyuKey], el));
+      } else {
+        el.innerHTML = lang === "zh" ? BLOCKS[el.__laoyuKey] : el.__laoyuEn;
+      }
+    });
+  }
+
+  function applyText(root) {
+    var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (node) {
+        var p = node.parentElement;
+        if (!p || /^(SCRIPT|STYLE)$/.test(p.tagName)) return NodeFilter.FILTER_REJECT;
+        if (p.closest("[data-i18n-block]")) return NodeFilter.FILTER_REJECT;
+        if (p.closest(".lyChat, .biZh")) return NodeFilter.FILTER_REJECT;
+        /* paired .en / .zh content is already written in its own language */
+        if (p.closest(".en, .zh")) return NodeFilter.FILTER_REJECT;
+        return norm(node.data) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+      }
+    });
+    var node, bi = [];
+    while ((node = walker.nextNode())) {
+      var current = norm(node.data);
+      var en = node.__laoyuEn ||
+        (TEXT[current] ? current : REVERSE[current]);
+      if (!en) continue;
+      if (TEXT[current] && current !== en) en = current;
+      node.__laoyuEn = en;
+      var lead = node.data.match(/^\s*/)[0];
+      var trail = node.data.match(/\s*$/)[0];
+      var p = node.parentElement;
+      if (p.tagName === "TITLE") {
+        node.data = lead + (lang === "zh" ? TEXT[en] : en) + trail; // tab title: one language
+      } else if (mode === "bi" && !/^(OPTION|TEXTAREA)$/.test(p.tagName)) {
+        node.data = lead + en + trail;
+        if (TEXT[en] !== en) bi.push(node);
+      } else if (mode === "bi") {
+        node.data = lead + en + " · " + TEXT[en].replace(/<[^>]+>/g, "") + trail;
+      } else {
+        node.data = lead + (lang === "zh" ? TEXT[en] : en) + trail;
+      }
+    }
+    /* added after the walk so the walker doesn't visit the new spans */
+    bi.forEach(function (n) {
+      var p = n.parentElement, s = biTx(TEXT[n.__laoyuEn], p), pd = "";
+      try { pd = getComputedStyle(p).display; } catch (x) {}
+      if (/flex|grid/.test(pd)) {
+        /* flex/grid box: keep English + Chinese together as one item */
+        var w = document.createElement("span");
+        w.className = "biWrap biTx";
+        p.insertBefore(w, n);
+        w.appendChild(n);
+        w.appendChild(s);
+        s.classList.remove("biTx");
+      } else {
+        p.insertBefore(s, n.nextSibling);
+      }
+    });
+  }
+
+  function apply() {
+    document.documentElement.lang = lang === "zh" ? "zh-Hans" : "en";
+    document.documentElement.setAttribute("data-lang", lang);
+    if (mode === "bi") document.documentElement.setAttribute("data-bi", "");
+    else document.documentElement.removeAttribute("data-bi");
+    biStyle();
+    /* drop the Chinese lines added by the previous apply(); they are rebuilt below */
+    document.querySelectorAll(".biTx").forEach(function (s) {
+      if (s.classList.contains("biWrap") && s.parentNode && s.firstChild) s.parentNode.insertBefore(s.firstChild, s); // keep the English
+      s.remove();
+    });
+    var title = norm(document.title).split(" · ")[0];
+    var enTitle = TEXT[title] ? title : REVERSE[title];
+    if (enTitle) document.title = lang === "zh" ? TEXT[enTitle] : enTitle; // tab title: one language, even in EN+中
+    applyBlocks(document.body);
+    applyText(document.documentElement);
+    var order = ["en", "zh", "bi"];
+    var next = order[(order.indexOf(mode) + 1) % order.length];
+    document.querySelectorAll(".langToggle [data-l]").forEach(function (b) {
+      var l = b.getAttribute("data-l");
+      b.classList.toggle("on", l === mode);
+      b.classList.toggle("next", l === next);
+      b.setAttribute("aria-pressed", l === mode ? "true" : "false");
+    });
+    try {
+      document.dispatchEvent(new CustomEvent("laoyu:lang", { detail: lang }));
+    } catch (e) {}
+  }
+
+  function set(next) {
+    if (next !== "en" && next !== "zh" && next !== "bi") return;
+    mode = next;
+    if (next !== "bi") lang = next;
+    try {
+      localStorage.setItem(KEY, mode);
+      localStorage.setItem(BASE_KEY, lang);
+    } catch (e) {}
+    apply();
+  }
+
+  function addToggle() {
+    var navIn = document.querySelector(".navin");
+    if (!navIn || navIn.querySelector(".langToggle")) return;
+    var wrap = document.createElement("div");
+    wrap.className = "langToggle";
+    wrap.setAttribute("role", "group");
+    wrap.setAttribute("aria-label", "Language / 语言");
+    wrap.innerHTML =
+      '<button type="button" data-l="en" lang="en" aria-label="English">EN</button>' +
+      '<button type="button" data-l="zh" lang="zh-Hans" aria-label="中文">中文</button>' +
+      '<button type="button" data-l="bi" aria-label="Bilingual / 双语" title="Bilingual / 双语">EN+中</button>';
+    wrap.addEventListener("click", function (e) {
+      var b = e.target.closest("[data-l]");
+      if (b) set(b.getAttribute("data-l"));
+    });
+    var menu = navIn.querySelector(".mobileMenu");
+    navIn.insertBefore(wrap, menu || null);
+  }
+
+  window.LAOYU_I18N = {
+    t: t,
+    apply: apply,
+    lang: function () { return lang; },
+    mode: function () { return mode; },
+    bi: function () { return mode === "bi"; },
+    pick: pick,
+    plain: plain,
+    one: one,
+    init: function () { addToggle(); apply(); fixBi(document); }
+  };
+  watchBi();
+
+  document.documentElement.lang = lang === "zh" ? "zh-Hans" : "en";
+
+})();
