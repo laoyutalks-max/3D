@@ -61,7 +61,7 @@ Run through a local test server that replaces all outside network calls with a s
 | Category / type filters | all 8 counts match their labels | Quality + Calculator → empty message; Clear → 41; bogus `#c-…` hash → shows all | Pass |
 | Header search | matches | nonsense → "0 found · No match" | Pass |
 | Homepage OEE check | 78.3 %, perfect run 100 % | empty, zero, negative, text, downtime > planned, good > total → clear message, no NaN | Pass |
-| Full OEE Loss Calculator | 83.9 % | empty / zero cycle → blank; **break > shift, downtime > run, bad > total → shows 0 % and a wrong loss report** | **Issue (same in production)** |
+| Full OEE Loss Calculator | 83.9 %, perfect run 100 %, line never ran 0 %, nothing made 0 % | empty / zero cycle / text → "fill in" prompt; breaks ≥ shift, downtime > planned time, rejected > made, any negative → specific warning, field marked invalid | Fixed (was: 0 % and an invented loss report) |
 | Sign-up gate | unlocks, lead posted once | empty name, spaces-only name, empty/invalid email, `a..b@`, typo `gmial.com` (offers fix), disposable, test domain, domain without mail → right message, nothing sent | Pass |
 | Gate offline | — | network down → still unlocks, lead queued; next visit online → sent once, queue cleared | Pass |
 | Spreadsheet injection | — | name `=HYPERLINK(…)` stored as `'=HYPERLINK(…)` | Pass |
@@ -76,8 +76,9 @@ Found and fixed during these tests:
 - Printing could leave cards blank if they had not scrolled into view yet (fixed in `review3d.css`).
 - The Resources headline fix depended on the new layer; it now lives in `laoyu-31.css`, next to the dark hero it fixes.
 
+- Full OEE Loss Calculator (`tools-prod.js`) accepted impossible input and reported 0 % OEE with invented losses (e.g. 900 rejected of 780 made → "1,020 units lost"). It now names the problem in EN / 中文 (switches live with the language) and marks the field `aria-invalid`. Valid results are unchanged. **This is a production bug too**; the same patch can go to production when the owner wants it.
+
 Not fixed (also in production; owner decision):
-- Full OEE Loss Calculator (`tools-prod.js`) accepts impossible input and reports 0 % OEE with invented losses (e.g. 900 bad parts of 780 → "1,020 units lost"). The homepage mini-calculator already blocks this with messages in both languages.
 - Contact form requires 5+ characters, which rejects real short Chinese messages such as "请联系我", and the error ("please write a message") is confusing.
 - The three dashboards (`dash-*.html`) are "Coming soon", so their CSV import cannot be reached or tested by visitors.
 

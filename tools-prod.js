@@ -226,13 +226,32 @@
   function oee() {
     if (!$("oeeOut")) return;
     var ids = ["oeShift", "oeBreak", "oeDown", "oeCycle", "oeTotal", "oeBad", "oeValue"];
+    function mark(badId) {
+      ids.forEach(function (id) { var el = $(id); if (!el) return; if (id === badId) el.setAttribute("aria-invalid", "true"); else el.removeAttribute("aria-invalid"); });
+    }
     function calc() {
       var shift = num("oeShift"), brk = num("oeBreak") || 0, down = num("oeDown") || 0, cyc = num("oeCycle"), total = num("oeTotal"), bad = num("oeBad") || 0, val = num("oeValue");
       var out = $("oeeOut");
       if (!(shift > 0) || !(cyc > 0) || !(total >= 0) || !isFinite(total)) {
+        mark(null);
         out.innerHTML = '<p class="resNote">' + L("Fill in shift length, ideal cycle time and units made to see your OEE.", "填入班次时长、理想节拍和产量，即可看到你的 OEE。") + "</p>";
         return;
       }
+      /* Impossible combinations: say what is wrong instead of reporting invented losses */
+      var bad1 = brk < 0 ? ["oeBreak", L("Planned breaks can't be negative.", "计划休息时间不能是负数。")]
+        : down < 0 ? ["oeDown", L("Downtime can't be negative.", "停机时间不能是负数。")]
+        : bad < 0 ? ["oeBad", L("Rejected units can't be negative.", "不良数量不能是负数。")]
+        : val < 0 ? ["oeValue", L("Value per unit can't be negative.", "每件价值不能是负数。")]
+        : brk >= shift ? ["oeBreak", L("Planned breaks must be shorter than the shift.", "计划休息时间必须短于班次时长。")]
+        : down > shift - brk ? ["oeDown", L("Downtime can't be longer than the planned production time (shift minus breaks).", "停机时间不能超过计划生产时间（班次时长减去休息）。")]
+        : bad > total ? ["oeBad", L("Rejected units can't be more than total units made.", "不良数量不能多于总产量。")]
+        : null;
+      if (bad1) {
+        mark(bad1[0]);
+        out.innerHTML = '<p class="oeWarn" role="alert">⚠ ' + bad1[1] + "</p>";
+        return;
+      }
+      mark(null);
       var plan = shift - brk, run = Math.max(0, plan - down);
       var A = plan > 0 ? run / plan : 0;
       var P = run > 0 ? (total * cyc / 60) / run : 0;
